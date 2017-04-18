@@ -2,7 +2,7 @@
   "name": "octolive",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://6700.github.io/octolive/",
+  "homepage": "https://octolive.xyz/",
   "dependencies": {
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
@@ -16,6 +16,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build -a"
   }
 }
