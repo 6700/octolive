@@ -19,8 +19,10 @@ class FavoriteRepos extends Component {
   reposList = () => {
     return this.state.repos.map((repo, i) => {
       return (
-        <li className="favorite-repo-item col-xs-4" key={i}>
-          {repo.name}
+        <li className="col-xs-4" key={i}>
+          <div className="col-xs-12 favorite-repo-item">
+            {repo.name}
+          </div>
         </li>
       );
     })
