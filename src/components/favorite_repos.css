@@ -1,0 +1,6 @@
+.favorite-repo-item {
+  list-style: none;
+  border-color: 1px solid gray;
+  border-radius: 3px;
+  min-height: 150px;
+}
