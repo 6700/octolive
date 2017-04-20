@@ -3,6 +3,8 @@ class GithubWorker
 
   def perform(*args)
     # TODO: Iterate over users and send it to interactor
-    GithubInteractor.new().update_user_repositories
+    User.find_each do |user|
+      GithubInteractor.new(user).update_user_repositories
+    end
   end
 end

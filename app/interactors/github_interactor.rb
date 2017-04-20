@@ -1,9 +1,8 @@
 class GithubInteractor
   attr_accessor :user, :service
 
-  def initialize
-    # TODO: set user
-    @user = 1
+  def initialize user
+    @user = user
   end
 
   def update_user_repositories
@@ -21,7 +20,6 @@ class GithubInteractor
   end
 
   def service
-    # Send credentials of the user to the service
-    @service ||= GithubService.new()
+    @service ||= GithubService.new(user.access_token)
   end
 end
