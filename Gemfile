@@ -15,8 +15,13 @@ gem 'haml-rails'
 gem 'simple_form'
 
 gem 'devise'
+gem "octokit", "~> 4.0"
+
+gem 'sidekiq'
+gem 'sidekiq-scheduler'
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'pry-rails'
   gem 'rubocop', '0.47.1', require: false
 end
