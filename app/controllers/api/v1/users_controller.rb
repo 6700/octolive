@@ -1,7 +1,5 @@
 class Api::V1::UsersController < ApplicationController
   def show 
-    render json: {
-      test: true
-    }
+    render json: User.find(params[:id])
   end
 end
