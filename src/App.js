@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/navbar.js'
+import Home from './components/home.js'
+import Landing from './components/landing.js'
+import AuthenticationChest from './chests/authentication_chest';
 
 class App extends Component {
   render() {
+    var component;
+
+    if(AuthenticationChest.state.isLogged)
+    {
+      component = <Home/>;
+    }
+    else 
+    {
+      component = <Landing/>;
+    }
+
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Navbar/>
+        { component }
+        
       </div>
     );
   }
