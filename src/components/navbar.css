@@ -1,5 +1,7 @@
 .navbar-default{
 	background-color: #594F4F !important;
+	margin: 0 !important;
+	border: 0 !important;
 }
 .navbar-default a{
 	color: white !important;

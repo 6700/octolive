@@ -3,7 +3,28 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: calc(100vh - 70px);
+	height: calc(100vh - 48px);
 	width: 100%;
 	font-family: 'Raleway', sans-serif;
+	background-color:#547980;
+	color:  white ;
+	margin: 0;
+}
+.title h1{
+	font-size: 50px;
+}
+.btn-default{
+	background-color:transparent  !important;
+	color: white !important;
+	padding: 15px !important;
+	font-size: 25px !important;
+	border: 3px solid white !important;
+	transition: 0.3s !important;
+}
+.btn-default:hover{
+	background-color: #CC2A41 !important; 
+	border: 3px #CC2A41 solid !important;
+}
+button i {
+	margin: 5px;
 }

@@ -4,7 +4,6 @@ import Navbar from './components/navbar.js'
 import Home from './components/home.js'
 import Landing from './components/landing.js'
 import AuthenticationChest from './chests/authentication_chest';
-
 class App extends Component {
   render() {
     var component;
