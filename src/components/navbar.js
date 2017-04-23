@@ -1,11 +1,37 @@
 import React, { Component } from 'react';
+import AuthenticationChest from '../chests/authentication_chest';
 import './navbar.css';
 
 class Navbar extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      userName: "Placeholder"
+  componentDidMount = () => {
+    AuthenticationChest.register(this)
+  }
+
+  componentWillUnmount = () => {
+    AuthenticationChest.unregister(this)
+  }
+
+  renderUsername = () => {
+    if(AuthenticationChest.state.isLogged){
+      return (
+        <ul className="nav navbar-nav navbar-right">
+          <li>
+            <a href="#">
+              { AuthenticationChest.get("user")["name"] }
+            </a>
+          </li>
+        </ul>
+      );
+    } else {
+      return (
+        <ul className="nav navbar-nav navbar-right">
+          <li>
+            <a href="">
+              Iniciar sesión
+            </a>
+          </li>
+        </ul>
+      );
     }
   }
 
@@ -29,9 +55,7 @@ class Navbar extends Component {
                 <input type="text" className="form-control" placeholder="Search"/>
               </div>
             </form>
-            <ul className="nav navbar-nav navbar-right">
-              <li><a href="#">{ this.state.userName }</a></li>
-            </ul>
+            { this.renderUsername() }
           </div>
         </div>
       </nav>
