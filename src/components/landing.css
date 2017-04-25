@@ -68,6 +68,8 @@ button a{
 }
 .block{
 	height: 100vh;
+	display: flex;
+	align-items: center;
 }
 .marketing .col-lg-3 {
   background-color: #45ADA8;
