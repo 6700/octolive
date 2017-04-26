@@ -13,9 +13,9 @@ class Landing extends Component {
 			</div>
     		<div className="title">
     			<h1>Octolive</h1>
-    		</div>	
+    		</div>
     		<div className="subtitle">
-    			<h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+    			<h2>Make github notifications great again! </h2>
     		</div>
     		<button className="btn btn-default"><i className="fa fa-github" aria-hidden="true"></i>Sign in</button>
     	</div>
