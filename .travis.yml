@@ -6,6 +6,6 @@ script:
 
 deploy:
   provider: script
-  script: scripts/deploy.sh production $TRAVIS_TAG
+  script: scripts/deploy.sh
   on:
     branch: master
