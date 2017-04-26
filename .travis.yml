@@ -4,5 +4,8 @@ node_js:
 script:
   - echo "Test"
 
-after_success:
-  - npm run deploy
+deploy:
+  provider: script
+  script: scripts/deploy.sh production $TRAVIS_TAG
+  on:
+    branch: master
