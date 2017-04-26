@@ -6,6 +6,6 @@ script:
 
 deploy:
   provider: script
-  script: scripts/deploy.sh
+  script: yarn run deploy
   on:
     branch: master
