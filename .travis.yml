@@ -6,6 +6,6 @@ script:
 
 deploy:
   provider: script
-  script: echo 'hi'
+  script: scripts/deploy.sh
   on:
     branch: master
