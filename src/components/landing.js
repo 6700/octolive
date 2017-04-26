@@ -45,8 +45,16 @@ class Landing extends Component {
     			</div>
     		</div>
     	</div>
+    	<div className="container">
+    		<div className="about"> 
+    		<img src="/vline.gif" width="1" height="80%" hspace="0" border="0" />
+    			<ul >
+    				<li></li>
+    				<li></li>
+    			</ul>
+    		</div>
+    	</div>
     </div>
-
     )
   }
 }
