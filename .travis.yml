@@ -6,8 +6,6 @@ script:
 
 deploy:
   provider: script
-  script:
-    - sudo npm install -g react-scripts
-    - yarn run deploy
+  script: "scripts/deploy.sh"
   on:
     branch: master

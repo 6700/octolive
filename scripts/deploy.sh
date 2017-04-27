@@ -1,1 +1,1 @@
-yarn run deploy
+echo "TEst"
