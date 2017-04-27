@@ -1,2 +1,2 @@
 yarn install
-ls
+yarn run deploy
