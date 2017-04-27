@@ -45,7 +45,7 @@ class Landing extends Component {
     			</div>
     		</div>
     	</div>
-    	<div className="container">
+    	<!-- <div className="container">
     		<div className="about"> 
     		<img src="/vline.gif" width="1" height="80%" hspace="0" border="0" />
     			<ul >
@@ -53,9 +53,10 @@ class Landing extends Component {
     				<li></li>
     			</ul>
     		</div>
-    	</div>
+    	</div> -->
     </div>
     )
+    
   }
 }
 
