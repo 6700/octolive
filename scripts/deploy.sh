@@ -1,2 +1,2 @@
-yarn install
-yarn run deploy
+yarn install > /dev/null
+yarn run deploy 
