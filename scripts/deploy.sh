@@ -1,2 +1,1 @@
-echo "TEst"
-return 0;
+yarn run build
