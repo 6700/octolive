@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "7"
+script:
+  - echo "Test"
+
+deploy:
+  provider: script
+  script: bash scripts/deploy.sh
+  on:
+    branch: master
