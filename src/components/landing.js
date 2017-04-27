@@ -20,11 +20,11 @@ class Landing extends Component {
     		<button className="btn btn-default"><i className="fa fa-github" aria-hidden="true"></i>Sign in</button>
     	</div>
     	<div className="description">
-    		
+
     		<div className="container marketing">
     			<div className="row">
     				<div className="block col-lg-4 col-sm-4">
-    					
+
     					<p><i className="fa fa-snowflake-o fa-5x" aria-hidden="true"></i></p>
     					<h2>Heading</h2>
     					<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
@@ -46,18 +46,18 @@ class Landing extends Component {
     			</div>
     		</div>
     	</div>
-    	<!-- <div className="container">
-    		<div className="about"> 
+    	{/* <div className="container">
+    		<div className="about">
     		<img src="/vline.gif" width="1" height="80%" hspace="0" border="0" />
     			<ul >
     				<li></li>
     				<li></li>
     			</ul>
     		</div>
-    	</div> -->
+    	</div> */}
     </div>
     )
-    
+
   }
 }
 
