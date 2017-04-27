@@ -1,2 +1,2 @@
-npm install -g reacts-scripts
+npm install --global reacts-scripts
 yarn run build
