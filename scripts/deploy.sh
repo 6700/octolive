@@ -1,2 +1,2 @@
-sudo npm install -g reacts-scripts
+npm install -g reacts-scripts
 yarn run build
