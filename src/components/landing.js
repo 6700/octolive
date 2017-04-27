@@ -22,7 +22,7 @@ class Landing extends Component {
     	<div className="description marketing">
     		<div className="row">
     			<div className=" center col-lg-3 col-sm-3 col-sm-offset-3">
-    				<img className="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"/>
+    				<img className="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="140" height="140"/>
     				<h2>Heading</h2>
     				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
     				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -33,7 +33,7 @@ class Landing extends Component {
     				<button className="button btn btn-default" href="#" role="button"><a>View details &raquo;</a></button>
     			</div>
     			<div className="center col-lg-3 col-sm-3 ">
-    				<img className="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"/>
+    				<img className="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="140" height="140"/>
     				<h2>Heading</h2>
     				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
     				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
@@ -44,7 +44,7 @@ class Landing extends Component {
     				<button className="button btn btn-default" href="#" role="button"><a>View details &raquo;</a></button>
     			</div>
     			<div className="center col-lg-3 col-sm-3 ">
-    				<img className="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"/>
+    				<img className="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="140" height="140"/>
     				<h2>Heading</h2>
     				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
     				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
