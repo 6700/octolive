@@ -1,3 +1,4 @@
+eval `ssh-agent -s`
 ssh-add -L
 mkdir -p ~/.ssh
 ls ~/.ssh
