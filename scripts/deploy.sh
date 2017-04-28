@@ -1,3 +1,4 @@
+pwd
 openssl aes-256-cbc -K $encrypted_e8ec75924147_key -iv $encrypted_e8ec75924147_iv -in github_deploy_key.enc -out github_deploy_key -d
 ls
 GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa_example"
