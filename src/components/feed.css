@@ -1,5 +1,11 @@
 .feed{
-	border: 1px gray solid;
+	border-radius: 5px;
+	border: 1px #a6acbc solid;
 	height: 100vh;
 	margin-top: 10px;
+}
+.refresh-bar{
+	color: white;
+	background-color: #45ADA8;
+	height: 30px;
 }

@@ -5,7 +5,12 @@ class Feed extends Component {
 
     return (
     	<div className="col-xs-12"> 
-		<div className="feed"></div>
+			<div className="feed">
+    		<div className="refresh-bar">
+    			<button> <i className="fa fa-refresh" aria-hidden="true"></i></button>
+    		</div>
+				
+			</div>
     	</div>
     )
   }
