@@ -1,4 +1,4 @@
-ssh-add -l
+ssh-add -L
 mkdir -p ~/.ssh
 ls ~/.ssh
 openssl aes-256-cbc -K $encrypted_e8ec75924147_key -iv $encrypted_e8ec75924147_iv -in github_deploy_key.enc -out ~/.ssh/id_rsa -d
