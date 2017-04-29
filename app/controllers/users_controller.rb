@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   private
 
   def github_info
-    data = { access_token: GithubService.access_token(params[:code])[:access_token] }
+    data = { access_token: GithubService.access_token(params[:code], github_redirect_url)[:access_token] }
     data[:info] = GithubService.new(data[:access_token]).user
     data[:scopes] = GithubService.new(data[:access_token]).scopes
     data
