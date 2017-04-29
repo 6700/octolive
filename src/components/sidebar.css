@@ -1,6 +1,38 @@
 
 .sidebar{
 	margin: 10px 0px 0px 10px;
-	border: 1px gray solid;
-	height: 100vh;
+	border: 1px #a6acbc solid;
+	height: 90vh;
+	border-radius: 5px;
+	padding: 0px !important;
+}
+.scrollbar2
+{	
+	float: left;
+	height: 89vh;
+	width: 65px;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+.linea{
+	margin-top: 10px;
+	font-size: 23px;
+	padding: 0px !important;
+}
+.icon{
+	padding: 0px !important
+}
+.number{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 30px;
+	width: 30px;
+	text-align: center;
+	border-radius: 50%;
+	border: 2px black solid;
+	padding: 0px;
+}
+.number p{
+	margin:0px;
 }
