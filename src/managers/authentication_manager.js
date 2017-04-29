@@ -1,6 +1,7 @@
-import AuthenticationChest from '../chests/authentication_chest';
 
 import ApiRoutes from '../api_routes'
+
+const { AuthenticationChest, f } = window;
 
 class AuthenticationManager {
   checkLoginStatus = () => {
@@ -13,7 +14,7 @@ class AuthenticationManager {
   getProfileInfo = (force = false) => {
     if (!force && !AuthenticationChest.state.user){ return; }
     if(typeof(AuthenticationChest.state.local_token) !== "undefined" && AuthenticationChest.state.local_token !== "") {
-      fetch(ApiRoutes.profile + "?local_token=" + AuthenticationChest.state.local_token).then((e) => e.json())
+      f(ApiRoutes.profile)
         .then((content) => {
           AuthenticationChest.setState({
             isLogged: true,
