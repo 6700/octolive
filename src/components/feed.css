@@ -1,7 +1,7 @@
 .feed{
 	border-radius: 5px;
 	border: 1px #a6acbc solid;
-	height: 100vh;
+	height: 90vh;
 	margin-top: 10px;
 }
 .refresh-bar{
@@ -26,4 +26,17 @@
 }
 .box{
 	padding: 0px !important;
+}
+.scrollbar
+{	
+	float: left;
+	height: calc(90vh - 45px);
+	width: 65px;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+
+.force-overflow
+{
+	min-height: 450px;
 }
