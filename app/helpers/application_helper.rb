@@ -10,7 +10,8 @@ module ApplicationHelper
   ].freeze
 
   def github_auth_url
-    "https://github.com/login/oauth/authorize?scope=#{github_scopes}&client_id=#{Rails.application.secrets.github_client_id}"
+    redirect_uri = URI.encode("http://#{request.host}:#{request.port}/users/auth/github/callback?origin=#{origin}")
+    "https://github.com/login/oauth/authorize?scope=#{github_scopes}&client_id=#{Rails.application.secrets.github_client_id}&redirect_uri=#{redirect_uri}"
   end
 
   def github_scopes
