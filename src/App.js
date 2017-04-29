@@ -4,6 +4,7 @@ import Navbar from './components/navbar.js'
 import Home from './components/home.js'
 import Sidebar from './components/sidebar.js'
 import Feed from './components/feed.js'
+import FeedNotification from './components/feednotification.js'
 import Landing from './components/landing.js'
 import AuthenticationChest from './chests/authentication_chest';
 class App extends Component {
