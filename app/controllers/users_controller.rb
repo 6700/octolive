@@ -1,15 +1,13 @@
 class UsersController < ApplicationController
   def redirect
-    if params[:provider] == "github"
-      redirect_to github_auth_url
-    end
+    render json: {
+      url: github_auth_url
+    } 
   end
 
   def callback
-    # if params[:provider] == "github"
-    User.create_from_omniauth(:github, github_info)
-    redirect_to "/"
-    # end
+    user = User.create_from_omniauth(:github, github_info)
+    redirect_to "http://localhost:33992/?token=#{user.local_token}"
   end
 
   private
