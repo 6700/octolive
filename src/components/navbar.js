@@ -17,7 +17,8 @@ class Navbar extends Component {
         <ul className="nav navbar-nav navbar-right">
           <li>
             <a href="#">
-              { AuthenticationChest.get("user")["name"] }
+              <img src={AuthenticationChest.state.user.avatar_url} height={30} />
+              @{ AuthenticationChest.state.user.show_name }
             </a>
           </li>
         </ul>
@@ -46,7 +47,7 @@ class Navbar extends Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="#">Octolive</a>
+            <a className="navbar-brand" href="/">Octolive</a>
           </div>
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
