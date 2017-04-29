@@ -25,7 +25,6 @@ class App extends Component {
     {
       component = <Landing/>;
     }
-    console.log(AuthenticationChest.state)
     return (
       <div className="App">
         <Navbar/>
