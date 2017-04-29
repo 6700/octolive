@@ -17,7 +17,7 @@ class Navbar extends Component {
         <ul className="nav navbar-nav navbar-right">
           <li>
             <a href="#">
-              <img src={AuthenticationChest.state.user.avatar_url} height={30} />
+              <img src={AuthenticationChest.state.user.avatar_url} height={30} alt=""/>
               @{ AuthenticationChest.state.user.show_name }
             </a>
           </li>
