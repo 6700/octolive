@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
+import './chests/authentication_chest';
+import './helpers/requests';
 import Navbar from './components/navbar.js'
 import Home from './components/home.js'
 import Landing from './components/landing.js'
-import AuthenticationChest from './chests/authentication_chest';
 import AuthenticationManager from './managers/authentication_manager'
+
+const AuthenticationChest = window.AuthenticationChest;
 class App extends Component {
   componentDidMount() {
     AuthenticationChest.register(this)

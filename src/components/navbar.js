@@ -17,7 +17,8 @@ class Navbar extends Component {
         <ul className="nav navbar-nav navbar-right">
           <li>
             <a href="#">
-              { AuthenticationChest.get("user")["name"] }
+              <img src={AuthenticationChest.state.user.avatar_url} height={30} />
+              @{ AuthenticationChest.state.user.show_name }
             </a>
           </li>
         </ul>

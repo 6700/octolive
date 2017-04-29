@@ -5,7 +5,7 @@ const { AuthenticationChest, f } = window;
 
 class AuthenticationManager {
   checkLoginStatus = () => {
-    if(typeof(AuthenticationChest.state.local_token) === "undefined" && AuthenticationChest.state.local_token === "") {
+    if(typeof(AuthenticationChest.state.local_token) === "undefined" || AuthenticationChest.state.local_token === "") {
       this.checkUrl();
     }
     this.getProfileInfo()
