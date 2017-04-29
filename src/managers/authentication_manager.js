@@ -4,21 +4,14 @@ import ApiRoutes from '../api_routes'
 
 class AuthenticationManager {
   checkLoginStatus = () => {
-    if(typeof(AuthenticationChest.state.local_token) !== "undefined" && AuthenticationChest.state.local_token !== "") {
-      AuthenticationChest.setState({
-        isLogged: true
-      })
-    }
-    else {
+    if(typeof(AuthenticationChest.state.local_token) === "undefined" && AuthenticationChest.state.local_token === "") {
       this.checkUrl();
     }
     this.getProfileInfo()
   }
 
   getProfileInfo = (force = false) => {
-    if (!force && !AuthenticationChest.state.user){
-      return;
-    }
+    if (!force && !AuthenticationChest.state.user){ return; }
     if(typeof(AuthenticationChest.state.local_token) !== "undefined" && AuthenticationChest.state.local_token !== "") {
       fetch(ApiRoutes.profile + "?local_token=" + AuthenticationChest.state.local_token).then((e) => e.json())
         .then((content) => {
