@@ -1,4 +1,4 @@
-const api_url = process.env.api_url || "http://localhost:3000";
+const api_url = process.env.REACT_APP_API_URL || "http://localhost:3000";
 window.api_url = api_url;
 export default (() => {
   return {
