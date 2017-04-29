@@ -1,5 +1,4 @@
-const api_url = process.env.REACT_APP_API_URL || "http://localhost:3000";
-window.api_url = api_url;
+const api_url = process.env.REACT_APP_API_URL || "http://api.octolive.xyz";
 export default (() => {
   return {
     sign_in_redirection: api_url + "/users/auth/github/redirect",
