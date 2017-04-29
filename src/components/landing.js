@@ -9,7 +9,7 @@ class Landing extends Component {
     <div>
     	<div className="hero">
     		<div className="logo">
-    			<img src="/images/logo.svg" alt="logo"/>
+    			{/*<img src="/images/logo.svg" alt="logo"/>*/}
     		</div>
     		<div className="title">
     			<h1>Octolive</h1>
