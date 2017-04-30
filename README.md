@@ -15,3 +15,7 @@ Octolive adds many cool features like:
 - Integration with push notifications in your browser
 - See the results of your Continuous Integration platforms & deploys directly from your dashboard
 - Ignore notifications from certain repo, organization, or users
+
+# Frontend
+
+If you want the Frontend side of the project, check https://github.com/6700/octolive/tree/master
