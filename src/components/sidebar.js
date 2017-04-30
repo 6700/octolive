@@ -26,7 +26,7 @@ class Sidebar extends Component {
     			<SidebarLine />
     			<SidebarLine />
     			<SidebarLine />
-    			<SidebarLine />
+    			<SidebarLine />	
     		</div>
     	</div>
     </div>
