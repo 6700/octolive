@@ -1,0 +1,17 @@
+.icon{
+	padding: 0px !important
+}
+.number{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 30px;
+	width: 30px;
+	text-align: center;
+	border-radius: 50%;
+	border: 2px black solid;
+	padding: 0px;
+}
+.number p{
+	margin:0px;
+}	

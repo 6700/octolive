@@ -6,8 +6,12 @@ import Navbar from './components/navbar.js'
 import Home from './components/home.js'
 import Landing from './components/landing.js'
 import AuthenticationManager from './managers/authentication_manager'
-
+import Feed from './components/feed.js'
+import FeedNotification from './components/feednotification.js'
+import AuthenticationChest from './chests/authentication_chest';
+import SidebarLine from './components/sidebar-line'
 const AuthenticationChest = window.AuthenticationChest;
+
 class App extends Component {
   componentDidMount() {
     AuthenticationChest.register(this)

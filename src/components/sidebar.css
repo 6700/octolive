@@ -1,0 +1,30 @@
+
+.sidebar{
+	margin: 10px 0px 0px 10px;
+	border: 1px #a6acbc solid;
+	height: 90vh;
+	border-radius: 5px;
+	padding: 0px !important;
+}
+.scrollbar2
+{	
+	float: left;
+	height: 89vh;
+	width: 65px;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+.linea{
+	margin-top: 10px;
+	font-size: 23px;
+	padding: 0px !important;
+}
+hr.style14 { 
+  border: 0; 
+  height: 1px; 
+  background-color: #a6acbc;
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0); 
+}

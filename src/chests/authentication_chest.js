@@ -1,3 +1,4 @@
+
 import Chest from './chest'
 
 const AuthenticationChest = new Chest('authentication', {

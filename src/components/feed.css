@@ -1,0 +1,43 @@
+.feed{
+	border-radius: 5px;
+	border: 1px #a6acbc solid;
+	height: 90vh;
+	margin-top: 10px;
+}
+.refresh-bar{
+	color: white;
+	background-color: #45ADA8 ;
+	height: 40px;
+}
+.refresh-button{
+	margin: 5px;
+	border-radius: 6px;
+	background-color: #594F4F;
+}
+.side-inputs{
+	display: flex;
+	align-items: center;
+	height: 40px;
+}
+.selector-feed{
+	margin-left: 10px;
+	border-radius: 5px;
+	border: 2px #547980 solid;
+}
+.box{
+	padding: 0px !important;
+	height: 90vh;
+}
+.scrollbar
+{	
+	float: left;
+	height: calc(90vh - 45px);
+	width: 65px;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+
+.force-overflow
+{
+	min-height: 450px;
+}
