@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
+import ApiRoutes from '../api_routes'
 
 import './landing.css';
 
 import 'font-awesome/css/font-awesome.min.css';
 class Landing extends Component {
+  logIn = () => {
+    fetch(ApiRoutes.sign_in_redirection)
+      .then((response) => response.json())
+      .then((content) => {
+        document.location.href = content.url
+      })
+  }
+
   render () {
     return (
     <div>
     	<div className="hero">
     		<div className="logo">
-    			<img src="/images/logo.svg" alt="logo"/>
+    			{/*<img src="/images/logo.svg" alt="logo"/>*/}
     		</div>
     		<div className="title">
     			<h1>Octolive</h1>
@@ -17,7 +26,7 @@ class Landing extends Component {
     		<div className="subtitle">
     			<h2>Make github notifications great again! </h2>
     		</div>
-    		<button className="btn btn-default"><i className="fa fa-github" aria-hidden="true"></i>Sign in</button>
+    		<button onClick={this.logIn} className="btn btn-default"><i className="fa fa-github" aria-hidden="true"></i>Sign in</button>
     	</div>
     	<div className="description">
 

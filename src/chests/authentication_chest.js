@@ -1,8 +1,11 @@
+
 import Chest from './chest'
 
-var AuthenticationChest = new Chest('authentication', {
+const AuthenticationChest = new Chest('authentication', {
   isLogged: false,
   user: { }
 });
+
+window.AuthenticationChest = AuthenticationChest
 
 export default AuthenticationChest;
