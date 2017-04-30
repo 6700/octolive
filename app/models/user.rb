@@ -2,14 +2,13 @@ class User < ApplicationRecord
   has_many :collaborations
   has_many :repositories, through: :collaborations
 
-
-  def self.create_from_omniauth provider, info
+  def self.create_from_omniauth(_provider, info)
     # if provider == :github
-      create_from_omniauth_github info
+    create_from_omniauth_github info
     # end
   end
 
-  def self.create_from_omniauth_github data
+  def self.create_from_omniauth_github(data)
     info = data[:info]
     find_or_initialize_by(uid: info[:id]).tap do |t|
       t.update(

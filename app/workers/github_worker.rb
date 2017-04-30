@@ -1,7 +1,7 @@
 class GithubWorker
   include Sidekiq::Worker
 
-  def perform(*args)
+  def perform(*_args)
     # TODO: Iterate over users and send it to interactor
     User.find_each do |user|
       GithubInteractor.new(user).update_user_repositories

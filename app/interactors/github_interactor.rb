@@ -1,7 +1,7 @@
 class GithubInteractor
   attr_accessor :user, :service
 
-  def initialize user
+  def initialize(user)
     @user = user
   end
 
@@ -11,11 +11,11 @@ class GithubInteractor
     end
   end
 
-  def check_collaborators_for repository
+  def check_collaborators_for(repository)
     Collaboration.find_or_create_by(user: user, repository: repository)
   end
 
-  def update_repository repository
+  def update_repository(repository)
     Repository.find_or_initialize_by(uid: repository.id).tap do |r|
       r.update(
         name: repository.name,
@@ -25,7 +25,7 @@ class GithubInteractor
     end
   end
 
-  def update_owner owner
+  def update_owner(owner)
     Owner.find_or_initialize_by(uid: owner.id).tap do |s|
       s.update(
         avatar_url: owner.avatar_url,

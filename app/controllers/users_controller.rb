@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   def redirect
     render json: {
       url: github_auth_url
-    } 
+    }
   end
 
   def callback
@@ -15,7 +15,8 @@ class UsersController < ApplicationController
   private
 
   def github_info
-    data = { access_token: GithubService.access_token(params[:code], github_redirect_url)[:access_token] }
+    data = { access_token: GithubService.access_token(params[:code],
+                                                      github_redirect_url)[:access_token] }
     data[:info] = GithubService.new(data[:access_token]).user
     data[:scopes] = GithubService.new(data[:access_token]).scopes
     data
@@ -26,6 +27,6 @@ class UsersController < ApplicationController
   end
 
   def check_origin
-    render json: {message: "invalid origin"}, status: :forbidden unless is_an_valid_origin? origin
+    render json: { message: 'invalid origin' }, status: :forbidden unless an_valid_origin? origin
   end
 end
