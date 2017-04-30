@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import FavoriteRepos from './favorite_repos.js';
 import Feed from './feed.js';
 import Sidebar from './sidebar.js';
 import './home.css';
