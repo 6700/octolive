@@ -17,21 +17,23 @@ class GithubInteractor
 
   def update_repository(repository)
     Repository.find_or_initialize_by(uid: repository.id).tap do |r|
-      r.update(
+      r.assign_attributes(
         name: repository.name,
         url: repository.html_url,
         owner: update_owner(repository.owner)
       )
+      r.save if r.changed?
     end
   end
 
   def update_owner(owner)
     Owner.find_or_initialize_by(uid: owner.id).tap do |s|
-      s.update(
+      s.assign_attributes(
         avatar_url: owner.avatar_url,
         name: owner.login,
         type: owner.type.downcase
       )
+      s.save if s.changed?
     end
   end
 
