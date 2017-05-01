@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AuthenticationChest from '../chests/authentication_chest';
+import AuthenticationManager from '../managers/authentication_manager'
 import './navbar.css';
 
 class Navbar extends Component {
@@ -11,6 +12,9 @@ class Navbar extends Component {
     AuthenticationChest.unregister(this)
   }
 
+  logOut = () => {
+    AuthenticationManager.logOut()
+  }
   renderUsername = () => {
     if(AuthenticationChest.state.isLogged){
       return (
@@ -22,7 +26,7 @@ class Navbar extends Component {
             </a>
           </li>
           <li>
-            <a href="#">Log out</a>
+            <a onClick={this.logOut} href="#">Log out</a>
           </li>
         </ul>
       );
@@ -30,7 +34,7 @@ class Navbar extends Component {
       return (
         <ul className="nav navbar-nav navbar-right">
           <li>
-            <a href="">
+            <a  href="">
               Iniciar sesión
             </a>
           </li>
