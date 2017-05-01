@@ -26,7 +26,15 @@ class AuthenticationManager {
         })
     }
   }
-
+  
+  logIn = () => {
+    fetch(ApiRoutes.sign_in_redirection)
+      .then((response) => response.json())
+      .then((content) => {
+        document.location.href = content.url
+      })
+  }
+ 
   logOut = () => {
     AuthenticationChest.clearPersistedState();
     AuthenticationChest.setState({

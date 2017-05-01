@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import ApiRoutes from '../api_routes'
-
+import AuthenticationManager from '../managers/authentication_manager'
 import './landing.css';
 
 import 'font-awesome/css/font-awesome.min.css';
 class Landing extends Component {
-  logIn = () => {
-    fetch(ApiRoutes.sign_in_redirection)
-      .then((response) => response.json())
-      .then((content) => {
-        document.location.href = content.url
-      })
-  }
+    logIn = () => {
+        AuthenticationManager.logIn()
+    }
 
   render () {
     return (
