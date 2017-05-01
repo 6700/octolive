@@ -19,11 +19,7 @@ class Sidebar extends Component {
     			<SidebarLine text="Pull Requests" icon="code-fork" notificationsCount="2"/>
     			<SidebarLine text="Mentions" icon="commenting-o" notificationsCount="2"/>
     			<SidebarLine text="Issues" icon="exclamation-circle" notificationsCount="2"/>
-    			<Line />
-    			<SidebarLine />
-    			<SidebarLine />
-    			<SidebarLine />
-    			<SidebarLine />	
+
     		</div>
     	</div>
     </div>

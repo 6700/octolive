@@ -22,8 +22,7 @@ class Feed extends Component {
                 <button className="refresh-button"> <i className="fa fa-refresh" aria-hidden="true"></i></button>
             </div>
         </div>
-         <div className="scrollbar col-xs-12" id="style-default">
-            <div className="force-overflow">
+         <div className="notifications col-xs-12">
                 <FeedNotification />
                 <FeedNotification />
                 <FeedNotification />
@@ -36,7 +35,6 @@ class Feed extends Component {
                 <FeedNotification />
                 <FeedNotification />
                 <FeedNotification />
-            </div>
         </div>
        </div>
     </div>

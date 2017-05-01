@@ -1,8 +1,9 @@
 .feed{
 	border-radius: 5px;
-	border: 1px #a6acbc solid;
-	height: 90vh;
+	border: 1px #45ADA8 solid;
+	height: calc(100vh - 111px);
 	margin-top: 10px;
+	overflow: hidden;
 }
 .refresh-bar{
 	color: white;
@@ -22,22 +23,13 @@
 .selector-feed{
 	margin-left: 10px;
 	border-radius: 5px;
-	border: 2px #547980 solid;
+	border: 2px #45ADA8 solid;
 }
 .box{
 	padding: 0px !important;
-	height: 90vh;
+	height: calc(100vh - 111px);
 }
-.scrollbar
-{	
-	float: left;
-	height: calc(90vh - 45px);
-	width: 65px;
+.notifications{
+	height: calc(100vh - 111px);
 	overflow-y: scroll;
-	margin-bottom: 25px;
-}
-
-.force-overflow
-{
-	min-height: 450px;
 }

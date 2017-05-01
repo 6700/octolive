@@ -1,18 +1,11 @@
 
 .sidebar{
 	margin: 10px 0px 0px 10px;
-	border: 1px #a6acbc solid;
-	height: 90vh;
+	border: 1px #45ADA8 solid;
+	height: calc(100vh - 111px);
 	border-radius: 5px;
 	padding: 0px !important;
-}
-.scrollbar2
-{	
-	float: left;
-	height: 89vh;
-	width: 65px;
 	overflow-y: scroll;
-	margin-bottom: 25px;
 }
 hr.style14 { 
   border: 0; 
