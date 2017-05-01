@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ApiRoutes from '../api_routes'
 import AuthenticationManager from '../managers/authentication_manager'
 import './landing.css';
 
