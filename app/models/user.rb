@@ -3,9 +3,7 @@ class User < ApplicationRecord
   has_many :repositories, through: :collaborations
 
   def self.create_from_omniauth(_provider, info)
-    # if provider == :github
     create_from_omniauth_github info
-    # end
   end
 
   def self.create_from_omniauth_github(data)

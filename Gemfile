@@ -20,6 +20,9 @@ gem "octokit", "~> 4.0"
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
 
+gem 'active_model_serializers', '~> 0.10.0'
+gem 'kaminari'
+
 group :development, :test do
   gem 'dotenv-rails'
   gem 'pry-rails'

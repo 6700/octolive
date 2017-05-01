@@ -4,6 +4,25 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def paginated(resources)
+    {
+      data: ActiveModelSerializers::SerializableResource.new(paginated_resources(resources)),
+      metadata: {
+        current_page: paginated_resources(resources).current_page,
+        total_pages: paginated_resources(resources).total_pages,
+        total_items: paginated_resources(resources).total_count
+      }
+    }
+  end
+
+  def paginated_resources(resources)
+    @paginated_resources ||= resources.page(page)
+  end
+
+  def page
+    params.fetch(:page, 1)
+  end
+
   def authenticate_user!
     head :bad_request if current_user.nil?
   end
