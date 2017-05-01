@@ -22,7 +22,6 @@ class Sidebar extends Component {
     }
 
   render () {
-                console.log(this.state);
     return (
     <div className="col-xs-12 sidebar"> 
         <div className="scrollbar2 col-xs-12" >

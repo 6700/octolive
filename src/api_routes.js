@@ -4,6 +4,7 @@ export default (() => {
     sign_in_redirection: api_url + "/users/auth/github/redirect",
     access_token_validation: api_url + "/users/auth/github/callback",
     profile: api_url + "/api/v1/users/me",
-    notification: api_url + "/api/v1/notifications"
+    notification: api_url + "/api/v1/notifications",
+    feeds: api_url + "/api/v1/feeds"
   }
 })()

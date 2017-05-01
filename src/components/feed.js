@@ -1,7 +1,33 @@
 import React, { Component } from 'react';
 import './feed.css';
+import ApiRoutes from '../api_routes';
 import FeedNotification from './feednotification.js';
+const { f } = window;
 class Feed extends Component {
+  constructor (props) {
+        super(props)
+        this.state = {
+            feeds: []
+        }
+    }
+
+    componentDidMount() {
+        f(ApiRoutes.feeds)
+        .then((content) => {
+          this.setState({
+            feeds: content.data.map( (feed) => {
+              return {
+                bookmarked:feed.bookmarked,
+                id:feed.id,
+                message:feed.message,
+                repo_name:feed.repo_name
+
+              }
+            })
+          }) 
+        }) 
+          
+        }
   render () {
 
     return (
@@ -23,18 +49,12 @@ class Feed extends Component {
             </div>
         </div>
          <div className="notifications col-xs-12">
-                <FeedNotification />
-                <FeedNotification />
-                <FeedNotification />
-                <FeedNotification />
-                <FeedNotification />
-                <FeedNotification />
-                <FeedNotification />
-                <FeedNotification />
-                <FeedNotification />
-                <FeedNotification />
-                <FeedNotification />
-                <FeedNotification />
+                {
+                  this.state.feeds.map((feed, i) => {
+                    console.log(feed)
+                    return <FeedNotification bookmarked={feed.bookmarked} message={feed.message} repoName={feed.repo_name} key={i}/>
+                  })
+                }
         </div>
        </div>
     </div>
