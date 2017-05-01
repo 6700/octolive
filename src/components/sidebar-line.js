@@ -4,7 +4,7 @@ class SidebarLine extends Component {
   render () {
 
     return (
-             	<div className="col-xs-12 linea">
+             	<div className="col-xs-12 line">
              		<div className="col-xs-2 icon">
              			<i className="fa fa-envelope-open-o" aria-hidden="true"></i>
              		</div>

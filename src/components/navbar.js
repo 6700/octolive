@@ -15,11 +15,14 @@ class Navbar extends Component {
     if(AuthenticationChest.state.isLogged){
       return (
         <ul className="nav navbar-nav navbar-right">
-          <li>
+          <li className="user-data">
             <a href="#">
               <img src={AuthenticationChest.state.user.avatar_url} height={30} alt=""/>
               @{ AuthenticationChest.state.user.show_name }
             </a>
+          </li>
+          <li>
+            <a href="#">Log out</a>
           </li>
         </ul>
       );

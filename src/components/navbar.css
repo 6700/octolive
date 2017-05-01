@@ -6,3 +6,7 @@
 .navbar-default a{
 	color: white !important;
 }
+.user-data a img{
+	margin-right: 10px;
+	border-radius: 50%;
+}
