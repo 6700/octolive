@@ -13,7 +13,7 @@ class Api::V1::NotificationsController < ApplicationController
 
   def notifications_counts
     notifications_fields.inject({}) do |list, scope|
-      list["#{scope}_count"] = Random.rand(11)
+      list["#{scope}_count"] = current_user.events.call(scope).count
       list
     end
   end
