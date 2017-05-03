@@ -9,4 +9,5 @@ class Event < ApplicationRecord
   scope :pull_requests, -> { all }
   scope :mentions, -> { all }
   scope :issues, -> { all }
+  scope :unread, -> { where(read: false) }
 end
