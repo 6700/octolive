@@ -15,6 +15,16 @@ class GithubInteractor
     Collaboration.find_or_create_by(user: user, repository: repository)
   end
 
+  def update_events_with_notifications
+    service.notifications.each do |notification|
+      Event.find_or_initialize_by(uid: notification.id).update(
+        action_type: notification.reason,
+        user: user
+      )
+    end
+  end
+
+
   def update_repository(repository)
     Repository.find_or_initialize_by(uid: repository.id).tap do |r|
       r.assign_attributes(

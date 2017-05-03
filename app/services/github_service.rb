@@ -12,6 +12,10 @@ class GithubService
     @user ||= client.user
   end
 
+  def notifications
+    @notifications ||= client.notifications
+  end
+
   def self.access_token(code, redirect_uri)
     oauth_client = Octokit::Client.new(api_endpoint: 'https://github.com')
     oauth_client.post('/login/oauth/access_token',

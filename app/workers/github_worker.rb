@@ -3,7 +3,10 @@ class GithubWorker
 
   def perform(*_args)
     User.find_each do |user|
-      GithubInteractor.new(user).update_user_repositories
+      GithubInteractor.new(user).tap do |t|
+        t.update_user_repositories
+        t.update_events_with_notifications
+      end
     end
   end
 end
