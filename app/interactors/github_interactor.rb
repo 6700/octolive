@@ -11,6 +11,21 @@ class GithubInteractor
     end
   end
 
+  def update_pull_requests
+    user.repositories.find_each do |repository|
+      service.pull_requests(repository.full_name).each do |pull_request|
+        PullRequest.find_or_initialize_by(uid: pull_request.id).tap do |r|
+          r.assign_attributes(
+            title: repository.title,
+            body: repository.body,
+            repository: repository
+          )
+          r.save if r.changed?
+        end
+      end
+    end
+  end
+
   def check_collaborators_for(repository)
     Collaboration.find_or_create_by(user: user, repository: repository)
   end

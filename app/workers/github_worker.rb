@@ -5,7 +5,7 @@ class GithubWorker
     User.find_each do |user|
       GithubInteractor.new(user).tap do |t|
         t.update_user_repositories
-        t.update_events_with_notifications
+        t.update_pull_requests
       end
     end
   end
