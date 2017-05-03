@@ -19,6 +19,8 @@ class GithubInteractor
     service.notifications.each do |notification|
       Event.find_or_initialize_by(uid: notification.id).update(
         action_type: notification.reason,
+        message: notification.subject.title,
+        repo_name: notification.repository.full_name,
         user: user
       )
     end
