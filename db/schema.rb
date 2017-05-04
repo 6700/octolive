@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501213336) do
+ActiveRecord::Schema.define(version: 20170504010124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,13 +27,15 @@ ActiveRecord::Schema.define(version: 20170501213336) do
   create_table "events", force: :cascade do |t|
     t.string   "action_type"
     t.integer  "action_id"
-    t.boolean  "read"
+    t.boolean  "read",        default: false
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.boolean  "bookmarked"
     t.string   "message"
     t.string   "repo_name"
+    t.string   "uid"
+    t.string   "subtype"
     t.index ["action_type", "action_id"], name: "index_events_on_action_type_and_action_id", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
@@ -46,6 +48,17 @@ ActiveRecord::Schema.define(version: 20170501213336) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["uid"], name: "index_owners_on_uid", using: :btree
+  end
+
+  create_table "pull_requests", force: :cascade do |t|
+    t.string   "body"
+    t.string   "title"
+    t.string   "uid"
+    t.integer  "repository_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "number"
+    t.index ["repository_id"], name: "index_pull_requests_on_repository_id", using: :btree
   end
 
   create_table "repositories", force: :cascade do |t|
@@ -72,5 +85,6 @@ ActiveRecord::Schema.define(version: 20170501213336) do
   add_foreign_key "collaborations", "repositories"
   add_foreign_key "collaborations", "users"
   add_foreign_key "events", "users"
+  add_foreign_key "pull_requests", "repositories"
   add_foreign_key "repositories", "owners"
 end
