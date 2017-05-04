@@ -16,8 +16,9 @@ class GithubInteractor
       service.pull_requests(repository.full_name).each do |pull_request|
         PullRequest.find_or_initialize_by(uid: pull_request.id).tap do |r|
           r.assign_attributes(
-            title: repository.title,
-            body: repository.body,
+            number: pull_request.number,
+            title: pull_request.title,
+            body: pull_request.body,
             repository: repository
           )
           r.save if r.changed?
