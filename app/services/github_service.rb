@@ -33,6 +33,7 @@ class GithubService
   delegate :scopes, to: :client
 
   def client
+    Octokit.auto_paginate = true
     @client ||= Octokit::Client.new(access_token: access_token)
   end
 end
