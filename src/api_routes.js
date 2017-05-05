@@ -5,6 +5,7 @@ export default (() => {
     access_token_validation: api_url + "/users/auth/github/callback",
     profile: api_url + "/api/v1/users/me",
     notification: api_url + "/api/v1/notifications",
-    feeds: api_url + "/api/v1/feeds"
+    feeds: api_url + "/api/v1/feeds",
+    read_feed: (id) => { return api_url + "/api/v1/feeds/" + id + "/read"}
   }
 })()

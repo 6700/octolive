@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './sidebar.css';
 import SidebarLine from './sidebar-line';
 import Line from './line'
-import ApiRoutes from '../api_routes'
-const { f } = window;
+import NotificationManager from '../managers/notification_manager'
+const { NotificationChest } = window;
+
 class Sidebar extends Component {
     constructor (props) {
         super(props)
@@ -13,28 +14,23 @@ class Sidebar extends Component {
     }
 
     componentDidMount() {
-        f(ApiRoutes.notification)
-            .then((content) => {
-                this.setState({
-                    notificationsCount: content
-                })
-            })
+      NotificationManager.update()
     }
 
   render () {
     return (
-    <div className="col-xs-12 sidebar"> 
+    <div className="col-xs-12 sidebar">
         <div className="scrollbar2 col-xs-12" >
             <div className="force-overflow">
-    			<SidebarLine text="Inbox" icon="envelope-open-o" notificationsCount={this.state.notificationsCount.inbox_count} />
-    			<SidebarLine text="Archived" icon="check" notificationsCount={this.state.notificationsCount.archived_count}/>
-                <SidebarLine text="Pending" icon="clock-o" notificationsCount={this.state.notificationsCount.pending_count}/>
-    			<SidebarLine text="Important" icon="exclamation" notificationsCount={this.state.notificationsCount.important_count}/>
+    			<SidebarLine text="Inbox" icon="envelope-open-o" notificationsCount={NotificationChest.state.notificationsCount.inbox_count} />
+    			<SidebarLine text="Archived" icon="check" notificationsCount={NotificationChest.state.notificationsCount.archived_count}/>
+                <SidebarLine text="Pending" icon="clock-o" notificationsCount={NotificationChest.state.notificationsCount.pending_count}/>
+    			<SidebarLine text="Important" icon="exclamation" notificationsCount={NotificationChest.state.notificationsCount.important_count}/>
                 <Line />
-    			<SidebarLine text="Releases" icon="tags" notificationsCount={this.state.notificationsCount.releases_count}/>
-    			<SidebarLine text="Pull Requests" icon="code-fork" notificationsCount={this.state.notificationsCount.pull_request_count}/>
-    			<SidebarLine text="Mentions" icon="commenting-o" notificationsCount={this.state.notificationsCount.mentions_count}/>
-    			<SidebarLine text="Issues" icon="exclamation-circle" notificationsCount={this.state.notificationsCount.issues_count}/>
+    			<SidebarLine text="Releases" icon="tags" notificationsCount={NotificationChest.state.notificationsCount.releases_count}/>
+    			<SidebarLine text="Pull Requests" icon="code-fork" notificationsCount={NotificationChest.state.notificationsCount.pull_request_count}/>
+    			<SidebarLine text="Mentions" icon="commenting-o" notificationsCount={NotificationChest.state.notificationsCount.mentions_count}/>
+    			<SidebarLine text="Issues" icon="exclamation-circle" notificationsCount={NotificationChest.state.notificationsCount.issues_count}/>
 
     		</div>
     	</div>
