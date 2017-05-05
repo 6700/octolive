@@ -6,6 +6,7 @@ import Navbar from './components/navbar.js'
 import Home from './components/home.js'
 import Landing from './components/landing.js'
 import AuthenticationManager from './managers/authentication_manager'
+import Repositories from './components/repositories.js'
 
 const AuthenticationChest = window.AuthenticationChest;
 
@@ -20,7 +21,7 @@ class App extends Component {
 
     if(AuthenticationChest.state.isLogged)
     {
-      component = <Home/>;
+      component = <Repositories/>;
     }
     else 
     {

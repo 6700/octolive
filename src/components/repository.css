@@ -1,0 +1,11 @@
+.repository{
+	margin:5px;
+	border:1px solid #45ADA8;
+}
+.repo-desc{
+	display: inline-flex;
+}
+.repo-desc img{
+	width: 10vh;
+	height: 10vh;
+}
