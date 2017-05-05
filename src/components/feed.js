@@ -50,7 +50,7 @@ class Feed extends Component {
          <div className="notifications col-xs-12">
                 {
                   this.state.feeds.map((feed, i) => {
-                    return <FeedNotification bookmarked={feed.bookmarked} message={feed.message} repoName={feed.repo_name} id={feed.id} key={i}/>
+                    return <FeedNotification read={feed.read} bookmarked={feed.bookmarked} message={feed.message} repoName={feed.repo_name} id={feed.id} key={i}/>
                   })
                 }
         </div>

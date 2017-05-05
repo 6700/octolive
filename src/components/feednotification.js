@@ -13,13 +13,18 @@ class FeedNotification extends Component {
 
   render () {
     var bookmarkClass = "bookmark fa-2x fa fa-"
+    var feedClass = "feed-notification col-xs-12 ";
+    if (this.props.read) {
+      feedClass += "read";
+    }
+    
     if (this.props.bookmarked) {
         bookmarkClass += "bookmark"
     }else{
         bookmarkClass += "bookmark-o"
     }
     return (
-    <div onClick={this.handleClick} className="feed-notification col-xs-12 ">
+    <div onClick={this.handleClick} className={ feedClass }>
     	<div className="col-xs-2 col-sm-2 ">
     		<input type="checkbox" />
     		<i className={bookmarkClass} aria-hidden="true"></i>
