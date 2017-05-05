@@ -19,7 +19,7 @@ class FeedNotification extends Component {
         bookmarkClass += "bookmark-o"
     }
     return (
-    <div onclick={this.handleClick} className="feed-notification col-xs-12 ">
+    <div onClick={this.handleClick} className="feed-notification col-xs-12 ">
     	<div className="col-xs-2 col-sm-2 ">
     		<input type="checkbox" />
     		<i className={bookmarkClass} aria-hidden="true"></i>

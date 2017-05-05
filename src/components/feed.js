@@ -12,7 +12,7 @@ class Feed extends Component {
     }
 
     componentDidMount() {
-        f(ApiRoutes.feeds)
+      f(ApiRoutes.feeds)
         .then((content) => {
           this.setState({
             feeds: content.data.map( (feed) => {
@@ -24,20 +24,19 @@ class Feed extends Component {
 
               }
             })
-          }) 
-        }) 
-          
-        }
+          })
+        })
+    }
   render () {
 
     return (
-    <div className="col-xs-12 box"> 
+    <div className="col-xs-12 box">
       <div className="feed">
           <div className="col-xs-4">
              <div className="side-inputs">
                 <input type="checkbox"/>
                 <select className="selector-feed" name="select">
-                   <option value="value1" defaultValue>Marcar como leido </option> 
+                   <option value="value1" defaultValue>Marcar como leido </option>
                    <option value="value2">Archivar</option>
                    <option value="value3">Recordarme más tarde</option>
                </select>
@@ -51,8 +50,7 @@ class Feed extends Component {
          <div className="notifications col-xs-12">
                 {
                   this.state.feeds.map((feed, i) => {
-                    console.log(feed)
-                    return <FeedNotification bookmarked={feed.bookmarked} message={feed.message} repoName={feed.repo_name} key={i}/>
+                    return <FeedNotification bookmarked={feed.bookmarked} message={feed.message} repoName={feed.repo_name} id={feed.id} key={i}/>
                   })
                 }
         </div>

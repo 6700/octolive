@@ -6,15 +6,13 @@ import NotificationManager from '../managers/notification_manager'
 const { NotificationChest } = window;
 
 class Sidebar extends Component {
-    constructor (props) {
-        super(props)
-        this.state = {
-            notificationsCount: {}
-        }
-    }
-
     componentDidMount() {
       NotificationManager.update()
+      NotificationChest.register(this)
+    }
+
+    componentWillUnmount () {
+      NotificationChest.unregister(this)
     }
 
   render () {

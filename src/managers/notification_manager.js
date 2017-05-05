@@ -3,7 +3,7 @@ import ApiRoutes from '../api_routes'
 const { NotificationChest, f } = window;
 
 class NotificationManager {
-  forceUpdate = () => {
+  update = () => {
     f(ApiRoutes.notification)
         .then((content) => {
             NotificationChest.setState({
