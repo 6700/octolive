@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import './chests/authentication_chest';
+import './chests/notification_chest';
 import './helpers/requests';
 import Navbar from './components/navbar.js'
 import Home from './components/home.js'
@@ -22,7 +23,7 @@ class App extends Component {
     {
       component = <Home/>;
     }
-    else 
+    else
     {
       component = <Landing/>;
     }
@@ -30,7 +31,7 @@ class App extends Component {
       <div className="App">
         <Navbar/>
         { component }
-        
+
       </div>
     );
   }
