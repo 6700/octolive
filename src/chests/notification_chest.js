@@ -1,7 +1,7 @@
 
 import Chest from './chest'
 
-const NotificationChest = new Chest('authentication', {
+const NotificationChest = new Chest('notification', {
   isLogged: false,
   user: { }
 });
