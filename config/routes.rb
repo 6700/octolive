@@ -14,7 +14,9 @@ Rails.application.routes.draw do
       resources :notifications, only: [:index] do
         #[:inbox, :archived, :pending, :important, :releases, :pull_requests, :mentions, :issues]
       end
-      resources :feeds, only: [:index] 
+      resources :feeds, only: [:index] do
+        get :read
+      end
 
       resources :users, only: [] do
         collection do
