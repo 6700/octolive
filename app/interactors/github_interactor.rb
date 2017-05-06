@@ -14,32 +14,12 @@ class GithubInteractor
   def update_pull_requests
     user.repositories.find_each do |repository|
       service.pull_requests(repository.full_name).each do |pull_request|
-        PullRequest.find_or_initialize_by(uid: pull_request.id).tap do |r|
-          r.assign_attributes(
-            number: pull_request.number,
-            title: pull_request.title,
-            body: pull_request.body,
-            repository: repository
-          )
-          r.save if r.changed?
-        end
-      end
-    end
-  end
-
-  def update_issues
-    user.repositories.find_each do |repository|
-      service.issues(repository.full_name).each do |issue|
-        Issue.find_or_initialize_by(uid: issue.id).tap do |r|
-          r.assign_attributes(
-            owner: update_owner(issue.user),
-            title: issue.title,
-            body: issue.body,
-            number: issue.number,
-            repository: repository
-          )
-          r.save if r.changed?
-        end
+        PullRequest.sync_by({ uid: pull_request.id }, {
+          number: pull_request.number,
+          title: pull_request.title,
+          body: pull_request.body,
+          repository: repository
+        })
       end
     end
   end
@@ -71,14 +51,11 @@ class GithubInteractor
   end
 
   def update_owner(owner)
-    Owner.find_or_initialize_by(uid: owner.id).tap do |s|
-      s.assign_attributes(
-        avatar_url: owner.avatar_url,
-        name: owner.login,
-        type: owner.type.downcase
-      )
-      s.save if s.changed?
-    end
+    Owner.sync_by({uid: owner.id}, {
+      avatar_url: owner.avatar_url,
+      name: owner.login,
+      type: owner.type.downcase
+    })
   end
 
   def service

@@ -24,6 +24,7 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'kaminari'
 
 group :development, :test do
+  gem 'bullet', group: 'development'
   gem 'dotenv-rails'
   gem 'pry-rails'
   gem 'rubocop', '0.47.1', require: false
