@@ -3,7 +3,7 @@ class Api::V1::FeedsController < ApplicationController
   before_action :set_feed, only: [:read]
 
   def index
-    render json: paginated(Event.all.order(id: :desc))
+    render json: paginated(current_user.events.order(id: :desc))
   end
 
   def read
