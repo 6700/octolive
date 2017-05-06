@@ -12,9 +12,9 @@ class GithubService
     @user ||= client.user
   end
 
-  def pull_requests repository_full_name
-    client.pull_requests(repository_full_name)
-  end
+  delegate :pull_requests, to: :client
+
+  delegate :issues, to: :client
 
   def notifications
     @notifications ||= client.notifications

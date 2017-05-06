@@ -12,9 +12,8 @@ class Api::V1::NotificationsController < ApplicationController
   end
 
   def notifications_counts
-    notifications_fields.inject({}) do |list, scope|
+    notifications_fields.each_with_object({}) do |scope, list|
       list["#{scope}_count"] = current_user.events.send(scope).unread.count
-      list
     end
   end
 end
