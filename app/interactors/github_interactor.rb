@@ -27,6 +27,23 @@ class GithubInteractor
     end
   end
 
+  def update_issues
+    user.repositories.find_each do |repository|
+      service.issues(repository.full_name).each do |issue|
+        Issue.find_or_initialize_by(uid: issue.id).tap do |r|
+          r.assign_attributes(
+            owner: update_owner(issue.user),
+            title: issue.title,
+            body: issue.body,
+            number: issue.number,
+            repository: repository
+          )
+          r.save if r.changed?
+        end
+      end
+    end
+  end
+
   def check_collaborators_for(repository)
     Collaboration.find_or_create_by(user: user, repository: repository)
   end
@@ -41,7 +58,6 @@ class GithubInteractor
       )
     end
   end
-
 
   def update_repository(repository)
     Repository.find_or_initialize_by(uid: repository.id).tap do |r|

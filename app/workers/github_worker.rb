@@ -6,6 +6,7 @@ class GithubWorker
       GithubInteractor.new(user).tap do |t|
         t.update_user_repositories
         t.update_pull_requests
+        t.update_issues
       end
     end
   end
