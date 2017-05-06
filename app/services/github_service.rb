@@ -14,7 +14,9 @@ class GithubService
 
   delegate :pull_requests, to: :client
 
-  delegate :issues, to: :client
+  def issues repository_full_name
+    client.issues(repository_full_name)
+  end
 
   def notifications
     @notifications ||= client.notifications
