@@ -1,4 +1,4 @@
 :schedule:
   github:
-    every: 60s   # Runs once per minute
+    every: 120s   # Runs once per minute
     class: GithubWorker

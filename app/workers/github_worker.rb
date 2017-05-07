@@ -3,10 +3,15 @@ class GithubWorker
 
   def perform(*_args)
     User.includes(:repositories).find_each do |user|
-      GithubInteractor.new(user).tap do |t|
-        #t.update_user_repositories
-        t.update_pull_requests
-        #t.update_issues
+      begin 
+        GithubInteractor.new(user).tap do |t|
+          t.update_user_repositories
+          t.update_pull_requests
+          #t.update_issues
+          t.user.save
+        end
+      rescue GithubInteractor::RateLimitExceded => e
+        e
       end
     end
   end
