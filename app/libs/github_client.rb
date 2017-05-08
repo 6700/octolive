@@ -8,19 +8,20 @@ class GithubClient
     @access_token = access_token
   end
 
-  def repositories(since=nil)
-    get("/user/repos", since: since)
+  def repositories(last_etag=nil)
+    get("/user/repos", last_etag: last_etag)
   end
 
-  def get(url, since: nil)
-    since ||= Time.zone.now
+  def get(url, last_etag: nil)
+    last_etag ||= ""
     @last_response = self.class.get(url, {
       query: {
-        access_token: access_token
+        access_token: access_token,
+        per_page: 100
       },
       headers: {
-        "User-Agent": "Really-Working-Kit",
-        "If-Modified-Since": since.httpdate
+        "User-Agent" => "Really-Working-Kit",
+        "If-None-Match" => last_etag
       }
     })
   end

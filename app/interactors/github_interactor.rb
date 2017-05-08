@@ -6,9 +6,13 @@ class GithubInteractor
   end
 
   def update_user_repositories
-    service.repositories(user.last_repository_update).each do |repository|
-      check_collaborators_for(update_repository(repository))
+    repositories = service.repositories(user.last_repositories_etag)
+    if repositories.code != 304
+      repositories.each do |repository|
+        check_collaborators_for(update_repository(repository))
+      end
     end
+    user.update(last_repositories_etag: service.last_response.headers["etag"])
     flush_renew_data
   end
 
@@ -61,7 +65,6 @@ class GithubInteractor
 
   def flush_renew_data
     return if service.last_response.nil?
-    user.update_attributes(last_update: Time.zone.now)
     user.assign_attributes(
       remaining_rate: service.last_response.headers['x-ratelimit-remaining'],
       next_rate_reset: Time.at(service.last_response.headers['x-ratelimit-reset'].to_i),
