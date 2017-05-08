@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'devise'
 gem "octokit", "~> 4.0"
 gem 'faraday-http-cache'
+gem 'httparty'
 
 gem 'sidekiq'
 gem 'sidekiq-scheduler'

@@ -6,7 +6,7 @@ class GithubInteractor
   end
 
   def update_user_repositories
-    service.repositories.each do |repository|
+    service.repositories(user.last_repository_update).each do |repository|
       check_collaborators_for(update_repository(repository))
     end
     flush_renew_data
@@ -40,33 +40,22 @@ class GithubInteractor
     Collaboration.find_or_create_by(user: user, repository: repository)
   end
 
-  def update_events_with_notifications
-    service.notifications.each do |notification|
-      Event.find_or_initialize_by(uid: notification.id).update(
-        action_type: notification.reason,
-        message: notification.subject.title,
-        repo_name: notification.repository.full_name,
-        user: user
-      )
-    end
-  end
-
   def update_repository(repository)
-    Repository.find_or_initialize_by(uid: repository.id).tap do |r|
+    Repository.find_or_initialize_by(uid: repository["id"]).tap do |r|
       r.assign_attributes(
-        name: repository.name,
-        url: repository.html_url,
-        owner: update_owner(repository.owner)
+        name: repository["name"],
+        url: repository["html_url"],
+        owner: update_owner(repository["owner"])
       )
       r.save if r.changed?
     end
   end
 
   def update_owner(owner)
-    Owner.sync_by({ uid: owner.id }, {
-      avatar_url: owner.avatar_url,
-      name: owner.login,
-      type: owner.type.downcase
+    Owner.sync_by({ uid: owner["id"] }, {
+      avatar_url: owner["avatar_url"],
+      name: owner["login"],
+      type: owner["type"].downcase
     })
   end
 

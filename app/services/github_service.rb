@@ -6,8 +6,8 @@ class GithubService
     @access_token = access_token
   end
 
-  def repositories
-    @repositories = client.repositories
+  def repositories(since)
+    @repositories = new_client.repositories(since)
   end
 
   def user
@@ -37,10 +37,15 @@ class GithubService
   end
 
   delegate :scopes, to: :client
-  delegate :last_response, to: :client
+  delegate :last_response, to: :new_client
 
   def client
     Octokit.auto_paginate = true unless Octokit.auto_paginate
     @client ||= Octokit::Client.new(access_token: access_token)
+    raise 'noo'
+  end
+
+  def new_client
+    @new_client ||= GithubClient.new(access_token)
   end
 end
