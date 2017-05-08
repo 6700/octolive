@@ -11,23 +11,27 @@ class GithubInteractor
       repositories.each do |repository|
         check_collaborators_for(update_repository(repository))
       end
+      user.update(last_repositories_etag: service.last_response.headers["etag"])
     end
-    user.update(last_repositories_etag: service.last_response.headers["etag"])
     flush_renew_data
   end
 
   def update_pull_requests
     check_availability
-    user.repositories.find_each do |repository|
+    user.repositories.includes(:owner, :pull_requests).find_each do |repository|
       check_availability
-      service.pull_requests(repository.full_name).each do |pull_request|
-        PullRequest.sync_by({ uid: pull_request.id }, {
-          number: pull_request.number,
-          title: pull_request.title,
-          body: pull_request.body,
-          repository: repository
-        })
+      pull_requests = service.pull_requests(repository.full_name, repository.last_pull_requests_etag)
+      if pull_requests.code != 304 && pull_requests.code != 404
+        pull_requests.each do |pull_request|
+          PullRequest.sync_by({ uid: pull_request["id"] }, {
+            number: pull_request["number"],
+            title: pull_request["title"],
+            body: pull_request["body"],
+            repository: repository
+          })
+        end
       end
+      repository.update_if_changed(last_pull_requests_etag: service.last_response.headers["etag"])
       flush_renew_data
     end
     flush_renew_data
@@ -36,7 +40,7 @@ class GithubInteractor
   def check_availability
     return if user.can_request?
     flush_renew_data
-    user.save
+    user.save if user.changed?
     raise RateLimitExceded
   end
 
@@ -45,14 +49,11 @@ class GithubInteractor
   end
 
   def update_repository(repository)
-    Repository.find_or_initialize_by(uid: repository["id"]).tap do |r|
-      r.assign_attributes(
-        name: repository["name"],
-        url: repository["html_url"],
-        owner: update_owner(repository["owner"])
-      )
-      r.save if r.changed?
-    end
+    Repository.sync_by({uid: repository["id"]}, {
+      name: repository["name"],
+      url: repository["html_url"],
+      owner: update_owner(repository["owner"])
+    })
   end
 
   def update_owner(owner)

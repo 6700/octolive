@@ -14,8 +14,8 @@ class GithubService
     @user ||= client.user
   end
 
-  def pull_requests repository_full_name
-    client.pull_requests(repository_full_name)
+  def pull_requests repository_full_name, since
+    new_client.pull_requests(repository_full_name, since)
   end
 
   def issues repository_full_name

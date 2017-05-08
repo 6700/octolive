@@ -7,4 +7,9 @@ class ApplicationRecord < ActiveRecord::Base
       r.save if r.changed?
     end
   end
+
+  def update_if_changed(attributes)
+    assign_attributes(attributes)
+    save if changed?
+  end
 end
