@@ -37,23 +37,32 @@ class GithubInteractor
     flush_renew_data
   end
 
+
+
+  def service
+    @service ||= GithubService.new(user.access_token)
+  end
+
+  class RateLimitExceded < StandardError; end
+
+  private
+  def check_collaborators_for(repository)
+    Collaboration.find_or_create_by(user: user, repository: repository)
+  end
+  
+  def flush_renew_data
+    return if service.last_response.nil?
+    user.assign_attributes(
+      remaining_rate: service.last_response.headers['x-ratelimit-remaining'],
+      next_rate_reset: Time.at(service.last_response.headers['x-ratelimit-reset'].to_i),
+    )
+  end
+  
   def check_availability
     return if user.can_request?
     flush_renew_data
     user.save if user.changed?
     raise RateLimitExceded
-  end
-
-  def check_collaborators_for(repository)
-    Collaboration.find_or_create_by(user: user, repository: repository)
-  end
-
-  def update_repository(repository)
-    Repository.sync_by({uid: repository["id"]}, {
-      name: repository["name"],
-      url: repository["html_url"],
-      owner: update_owner(repository["owner"])
-    })
   end
 
   def update_owner(owner)
@@ -64,17 +73,11 @@ class GithubInteractor
     })
   end
 
-  def flush_renew_data
-    return if service.last_response.nil?
-    user.assign_attributes(
-      remaining_rate: service.last_response.headers['x-ratelimit-remaining'],
-      next_rate_reset: Time.at(service.last_response.headers['x-ratelimit-reset'].to_i),
-    )
+  def update_repository(repository)
+    Repository.sync_by({uid: repository["id"]}, {
+      name: repository["name"],
+      url: repository["html_url"],
+      owner: update_owner(repository["owner"])
+    })
   end
-
-  def service
-    @service ||= GithubService.new(user.access_token)
-  end
-
-  class RateLimitExceded < StandardError; end
 end
