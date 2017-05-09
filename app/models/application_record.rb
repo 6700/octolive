@@ -5,6 +5,7 @@ class ApplicationRecord < ActiveRecord::Base
     self.find_or_initialize_by(find_attributes).tap do |r|
       r.assign_attributes(update_attributes)
       r.save if r.changed?
+      Rails.logger.info r.errors unless r.valid?
     end
   end
 

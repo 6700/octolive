@@ -16,6 +16,11 @@ class GithubClient
     get("/repos/#{repository_name}/pulls", last_etag: last_etag)
   end
 
+  def issues(repository_name, last_etag=nil)
+    get("/repos/#{repository_name}/issues", last_etag: last_etag)
+  end
+
+
   def get(url, last_etag: nil)
     last_etag ||= ""
     @last_response = self.class.get(url, {

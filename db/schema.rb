@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508221224) do
+ActiveRecord::Schema.define(version: 20170509012722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,14 +42,12 @@ ActiveRecord::Schema.define(version: 20170508221224) do
 
   create_table "issues", force: :cascade do |t|
     t.string   "uid"
-    t.integer  "owner_id"
     t.string   "title"
     t.text     "body"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "repository_id"
     t.integer  "number"
-    t.index ["owner_id"], name: "index_issues_on_owner_id", using: :btree
     t.index ["repository_id"], name: "index_issues_on_repository_id", using: :btree
   end
 
@@ -82,6 +80,7 @@ ActiveRecord::Schema.define(version: 20170508221224) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.string   "last_pull_requests_etag"
+    t.string   "last_issues_etag"
     t.index ["owner_id"], name: "index_repositories_on_owner_id", using: :btree
   end
 
@@ -103,7 +102,6 @@ ActiveRecord::Schema.define(version: 20170508221224) do
   add_foreign_key "collaborations", "repositories"
   add_foreign_key "collaborations", "users"
   add_foreign_key "events", "users"
-  add_foreign_key "issues", "owners"
   add_foreign_key "issues", "repositories"
   add_foreign_key "pull_requests", "repositories"
   add_foreign_key "repositories", "owners"

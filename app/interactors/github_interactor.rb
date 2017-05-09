@@ -20,15 +20,16 @@ class GithubInteractor
     check_availability
     user.repositories.includes(:owner, :pull_requests).find_each do |repository|
       check_availability
-      pull_requests = service.pull_requests(repository.full_name, repository.last_pull_requests_etag)
-      if pull_requests.code != 304 && pull_requests.code != 404
-        pull_requests.each do |pull_request|
-          PullRequest.sync_by({ uid: pull_request["id"] }, {
-            number: pull_request["number"],
-            title: pull_request["title"],
-            body: pull_request["body"],
-            repository: repository
-          })
+      service.pull_requests(repository.full_name, repository.last_pull_requests_etag).tap do |pull_requests|
+        if pull_requests.code != 304 && pull_requests.code != 404
+          pull_requests.each do |pull_request|
+            PullRequest.sync_by({ uid: pull_request["id"] }, {
+              number: pull_request["number"],
+              title: pull_request["title"],
+              body: pull_request["body"],
+              repository: repository
+            })
+          end
         end
       end
       repository.update_if_changed(last_pull_requests_etag: service.last_response.headers["etag"])
@@ -37,19 +38,39 @@ class GithubInteractor
     flush_renew_data
   end
 
+  def update_issues
+    check_availability
+    user.repositories.includes(:owner).find_each do |repository|
+      check_availability
+      service.issues(repository.full_name, repository.last_issues_etag).tap do |issues|
+        if issues.code != 304 && issues.code != 404
+          issues.each do |issue|
+            next if issue.has_key? "pull_request"
+            Issue.sync_by({ uid: issue["id"] }, {
+              number: issue["number"],
+              repository: repository,
+              title: issue["title"],
+              body: issue["body"]
+              })
+          end
+        end
+      end   
+      repository.update_if_changed(last_issues_etag: service.last_response.headers["etag"])
+      flush_renew_data
+    end
+    flush_renew_data
+  end
 
+  private
 
   def service
     @service ||= GithubService.new(user.access_token)
   end
 
-  class RateLimitExceded < StandardError; end
-
-  private
   def check_collaborators_for(repository)
     Collaboration.find_or_create_by(user: user, repository: repository)
   end
-  
+
   def flush_renew_data
     return if service.last_response.nil?
     user.assign_attributes(
@@ -80,4 +101,6 @@ class GithubInteractor
       owner: update_owner(repository["owner"])
     })
   end
+
+  class RateLimitExceded < StandardError; end
 end

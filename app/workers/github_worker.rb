@@ -7,7 +7,7 @@ class GithubWorker
         GithubInteractor.new(user).tap do |t|
           t.update_user_repositories
           t.update_pull_requests
-          #t.update_issues
+          t.update_issues
           t.user.save if t.user.changed?
         end
       rescue GithubInteractor::RateLimitExceded => e
