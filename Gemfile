@@ -18,6 +18,7 @@ gem 'devise'
 gem "octokit", "~> 4.0"
 gem 'faraday-http-cache'
 gem 'httparty'
+gem 'rollbar'
 
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
