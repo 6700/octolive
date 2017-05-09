@@ -6,82 +6,101 @@ class GithubInteractor
   end
 
   def update_user_repositories
-    service.repositories.each do |repository|
-      check_collaborators_for(update_repository(repository))
+    repositories = service.repositories(user.last_repositories_etag)
+    if repositories.code != 304
+      repositories.each do |repository|
+        check_collaborators_for(update_repository(repository))
+      end
+      user.update(last_repositories_etag: service.last_response.headers["etag"])
     end
+    flush_renew_data
   end
 
   def update_pull_requests
-    user.repositories.find_each do |repository|
-      service.pull_requests(repository.full_name).each do |pull_request|
-        PullRequest.find_or_initialize_by(uid: pull_request.id).tap do |r|
-          r.assign_attributes(
-            number: pull_request.number,
-            title: pull_request.title,
-            body: pull_request.body,
-            repository: repository
-          )
-          r.save if r.changed?
+    check_availability
+    user.repositories.includes(:owner, :pull_requests).find_each do |repository|
+      check_availability
+      service.pull_requests(repository.full_name, repository.last_pull_requests_etag).tap do |pull_requests|
+        if pull_requests.code != 304 && pull_requests.code != 404
+          pull_requests.each do |pull_request|
+            PullRequest.sync_by({ uid: pull_request["id"] }, {
+              number: pull_request["number"],
+              title: pull_request["title"],
+              body: pull_request["body"],
+              repository: repository
+            })
+          end
         end
       end
+      repository.update_if_changed(last_pull_requests_etag: service.last_response.headers["etag"])
+      flush_renew_data
     end
+    flush_renew_data
   end
 
   def update_issues
-    user.repositories.find_each do |repository|
-      service.issues(repository.full_name).each do |issue|
-        Issue.find_or_initialize_by(uid: issue.id).tap do |r|
-          r.assign_attributes(
-            owner: update_owner(issue.user),
-            title: issue.title,
-            body: issue.body,
-            number: issue.number,
-            repository: repository
-          )
-          r.save if r.changed?
+    check_availability
+    user.repositories.includes(:owner).find_each do |repository|
+      check_availability
+      service.issues(repository.full_name, repository.last_issues_etag).tap do |issues|
+        if issues.code != 304 && issues.code != 404
+          issues.each do |issue|
+            next if issue.has_key? "pull_request"
+            Issue.sync_by({ uid: issue["id"] }, {
+              number: issue["number"],
+              repository: repository,
+              title: issue["title"],
+              body: issue["body"]
+              })
+          end
         end
-      end
+      end   
+      repository.update_if_changed(last_issues_etag: service.last_response.headers["etag"])
+      flush_renew_data
     end
+    flush_renew_data
+  end
+
+  private
+
+  def service
+    @service ||= GithubService.new(user.access_token)
   end
 
   def check_collaborators_for(repository)
     Collaboration.find_or_create_by(user: user, repository: repository)
   end
 
-  def update_events_with_notifications
-    service.notifications.each do |notification|
-      Event.find_or_initialize_by(uid: notification.id).update(
-        action_type: notification.reason,
-        message: notification.subject.title,
-        repo_name: notification.repository.full_name,
-        user: user
-      )
-    end
+  def flush_renew_data
+    return if service.last_response.nil?
+    user.assign_attributes(
+      remaining_rate: service.last_response.headers['x-ratelimit-remaining'],
+      next_rate_reset: Time.at(service.last_response.headers['x-ratelimit-reset'].to_i),
+    )
   end
-
-  def update_repository(repository)
-    Repository.find_or_initialize_by(uid: repository.id).tap do |r|
-      r.assign_attributes(
-        name: repository.name,
-        url: repository.html_url,
-        owner: update_owner(repository.owner)
-      )
-      r.save if r.changed?
-    end
+  
+  def check_availability
+    return if user.can_request?
+    flush_renew_data
+    user.save if user.changed?
+    raise RateLimitExceded
   end
 
   def update_owner(owner)
-    Owner.find_or_initialize_by(uid: owner.id).tap do |s|
-      s.assign_attributes(
-        avatar_url: owner.avatar_url,
-        name: owner.login,
-        type: owner.type.downcase
-      )
-      s.save if s.changed?
-    end
+    Owner.sync_by({ uid: owner["id"] }, {
+      avatar_url: owner["avatar_url"],
+      name: owner["login"],
+      type: owner["type"].downcase
+    })
   end
 
-  def service
-    @service ||= GithubService.new(user.access_token)
+  def update_repository(repository)
+    Repository.sync_by({uid: repository["id"]}, {
+      name: repository["name"],
+      url: repository["html_url"],
+      owner: update_owner(repository["owner"])
+    })
   end
+
+  class RateLimitExceded < StandardError; end
 end

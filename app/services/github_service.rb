@@ -1,21 +1,25 @@
 class GithubService
   attr_accessor :user, :client, :repositories, :access_token
+
+
   def initialize(access_token)
     @access_token = access_token
   end
 
-  def repositories
-    @repositories = client.repositories
+  def repositories(since)
+    @repositories = new_client.repositories(since)
   end
 
   def user
     @user ||= client.user
   end
 
-  delegate :pull_requests, to: :client
+  def pull_requests repository_full_name, since
+    new_client.pull_requests(repository_full_name, since)
+  end
 
-  def issues repository_full_name
-    client.issues(repository_full_name)
+  def issues repository_full_name, since
+    new_client.issues(repository_full_name, since)
   end
 
   def notifications
@@ -33,9 +37,15 @@ class GithubService
   end
 
   delegate :scopes, to: :client
+  delegate :last_response, to: :new_client
 
   def client
-    Octokit.auto_paginate = true
+    Octokit.auto_paginate = true unless Octokit.auto_paginate
     @client ||= Octokit::Client.new(access_token: access_token)
+    raise 'noo'
+  end
+
+  def new_client
+    @new_client ||= GithubClient.new(access_token)
   end
 end

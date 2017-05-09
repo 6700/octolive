@@ -23,4 +23,12 @@ class User < ApplicationRecord
   def local_token
     access_token
   end
+
+  def can_request?
+    remaining_rate > 0 || next_rate_reset < Time.zone.now
+  end
+
+  def last_repository_update
+    last_update
+  end
 end

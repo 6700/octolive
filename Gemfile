@@ -16,6 +16,8 @@ gem 'simple_form'
 
 gem 'devise'
 gem "octokit", "~> 4.0"
+gem 'faraday-http-cache'
+gem 'httparty'
 
 gem 'sidekiq'
 gem 'sidekiq-scheduler'
@@ -24,6 +26,7 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'kaminari'
 
 group :development, :test do
+  gem 'bullet', group: 'development'
   gem 'dotenv-rails'
   gem 'pry-rails'
   gem 'rubocop', '0.47.1', require: false

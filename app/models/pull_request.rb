@@ -4,6 +4,8 @@ class PullRequest < ApplicationRecord
 
   after_create :create_events
 
+  validates :uid, uniqueness: true
+
   def create_events
     users.each do |user|
       Event.create(
