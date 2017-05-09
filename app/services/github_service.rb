@@ -42,7 +42,7 @@ class GithubService
   def client
     Octokit.auto_paginate = true unless Octokit.auto_paginate
     @client ||= Octokit::Client.new(access_token: access_token)
-    raise 'noo'
+    #raise 'noo'
   end
 
   def new_client
