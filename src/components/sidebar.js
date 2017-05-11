@@ -26,7 +26,7 @@ class Sidebar extends Component {
     			<SidebarLine text="Important" icon="exclamation" notificationsCount={NotificationChest.state.notificationsCount.important_count}/>
                 <Line />
     			<SidebarLine text="Releases" icon="tags" notificationsCount={NotificationChest.state.notificationsCount.releases_count}/>
-    			<SidebarLine text="Pull Requests" icon="code-fork" notificationsCount={NotificationChest.state.notificationsCount.pull_request_count}/>
+    			<SidebarLine text="Pull Requests" icon="code-fork" notificationsCount={NotificationChest.state.notificationsCount.pull_requests_count}/>
     			<SidebarLine text="Mentions" icon="commenting-o" notificationsCount={NotificationChest.state.notificationsCount.mentions_count}/>
     			<SidebarLine text="Issues" icon="exclamation-circle" notificationsCount={NotificationChest.state.notificationsCount.issues_count}/>
 
