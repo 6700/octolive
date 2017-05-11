@@ -6,9 +6,9 @@ class Event < ApplicationRecord
   scope :pending, -> { all }
   scope :important, -> { all }
   scope :releases, -> { all }
-  scope :pull_requests, -> { all }
+  scope :pull_requests, -> { where(action_type: :pull_request) }
   scope :mentions, -> { all }
-  scope :issues, -> { all }
+  scope :issues, -> { where(action_type: :issue) }
   scope :unread, -> { where(read: false) }
 
   def action
