@@ -5,7 +5,12 @@ import './index.css';
 import './components/favorite_repos.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
+import { HashRouter } from 'react-router-dom';
+import { browserHistory } from 'react-router-dom';
+
 ReactDOM.render(
-  <App />,
+  <HashRouter history={browserHistory}>
+    <App/>
+  </HashRouter>,
   document.getElementById('root')
 );
