@@ -6,6 +6,10 @@
 	justify-content: center;
 	border-radius: 10px;
 	margin-top: 10px;
+  background: lightgrey;
+}
+.read {
+  background: transparent;
 }
 .repo-name{
 	text-align: right;

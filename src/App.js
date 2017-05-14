@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+
 import './App.css';
 import './chests/authentication_chest';
+import './chests/notification_chest';
 import './helpers/requests';
 import Navbar from './components/navbar.js'
-import Home from './components/home.js'
-import Landing from './components/landing.js'
 import AuthenticationManager from './managers/authentication_manager'
 import Repositories from './components/repositories.js'
+import Home from './components/home'
+import Landing from './components/landing'
+import { Route, Switch } from 'react-router-dom';
+
 
 const AuthenticationChest = window.AuthenticationChest;
 
@@ -17,21 +21,27 @@ class App extends Component {
   }
 
   render() {
-    var component;
-
-    if(AuthenticationChest.state.isLogged)
-    {
-      component = <Repositories/>;
-    }
-    else 
-    {
-      component = <Landing/>;
-    }
     return (
       <div className="App">
         <Navbar/>
-        { component }
-        
+        <Switch>
+          {
+            (() => {
+              if(AuthenticationChest.state.isLogged) {
+                return (
+                 <div>  
+                  <Route exact path='/' component={Home} />
+                  <Route exact path='/repositories' component={Repositories} />
+                  </div>
+                  )
+              } else {
+                return (
+                  <Route exact path='/' component={Landing}/>
+                )
+              }
+            })()
+          }
+        </Switch>
       </div>
     );
   }

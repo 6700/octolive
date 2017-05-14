@@ -22,7 +22,7 @@ class Navbar extends Component {
   renderUsername = () => {
     if(AuthenticationChest.state.isLogged){
       return (
-        <ul className="nav navbar-nav navbar-right">
+        <ul className="nav navbar-nav navbar-right">       
           <li className="user-data">
             <a href="#">
               <img src={AuthenticationChest.state.user.avatar_url} height={30} alt=""/>
@@ -68,6 +68,8 @@ class Navbar extends Component {
               </div>
             </form>
             { this.renderUsername() }
+            <div className="routes navbar-collapse">
+              <a href="/#/repositories">Repositories</a></div>
           </div>
         </div>
       </nav>
