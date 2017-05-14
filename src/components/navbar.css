@@ -10,3 +10,16 @@
 	margin-right: 10px;
 	border-radius: 50%;
 }
+.routes{
+	height: 60px;
+	display: flex;
+	text-align: center;
+	align-items: center;
+}
+.routes a{
+	text-decoration: none;
+}
+ a:hover{
+	text-decoration: none !important;
+
+}

@@ -6,10 +6,11 @@ import './chests/notification_chest';
 import './helpers/requests';
 import Navbar from './components/navbar.js'
 import AuthenticationManager from './managers/authentication_manager'
+import Repositories from './components/repositories.js'
 import Home from './components/home'
 import Landing from './components/landing'
-
 import { Route, Switch } from 'react-router-dom';
+
 
 const AuthenticationChest = window.AuthenticationChest;
 
@@ -20,7 +21,6 @@ class App extends Component {
   }
 
   render() {
-
     return (
       <div className="App">
         <Navbar/>
@@ -29,8 +29,11 @@ class App extends Component {
             (() => {
               if(AuthenticationChest.state.isLogged) {
                 return (
-                  <Route exact path='/' component={Home}/>
-                )
+                 <div>  
+                  <Route exact path='/' component={Home} />
+                  <Route exact path='/repositories' component={Repositories} />
+                  </div>
+                  )
               } else {
                 return (
                   <Route exact path='/' component={Landing}/>
