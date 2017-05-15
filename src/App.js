@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './App.css';
 import './chests/authentication_chest';
 import './chests/notification_chest';
+import './chests/feed_chest';
 import './helpers/requests';
 import Navbar from './components/navbar.js'
 import AuthenticationManager from './managers/authentication_manager'
@@ -29,7 +30,7 @@ class App extends Component {
             (() => {
               if(AuthenticationChest.state.isLogged) {
                 return (
-                 <div>  
+                 <div>
                   <Route exact path='/' component={Home} />
                   <Route exact path='/repositories' component={Repositories} />
                   </div>

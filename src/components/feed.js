@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './feed.css';
-import ApiRoutes from '../api_routes';
+import FeedManager from '../managers/feed_manager';
 import FeedNotification from './feednotification.js';
-const { f } = window;
+const { FeedChest } = window;
 class Feed extends Component {
   constructor (props) {
         super(props)
@@ -11,21 +11,13 @@ class Feed extends Component {
         }
     }
 
-    componentDidMount() {
-      f(ApiRoutes.feeds)
-        .then((content) => {
-          this.setState({
-            feeds: content.data.map( (feed) => {
-              return {
-                bookmarked:feed.bookmarked,
-                id:feed.id,
-                message:feed.message,
-                repo_name:feed.repo_name
+    compoenntWillUnmount () {
+      FeedChest.unregister(this);
+    }
 
-              }
-            })
-          })
-        })
+    componentDidMount() {
+      FeedChest.register(this);
+      FeedManager.update()
     }
   render () {
 
@@ -49,7 +41,7 @@ class Feed extends Component {
         </div>
          <div className="notifications col-xs-12">
                 {
-                  this.state.feeds.map((feed, i) => {
+                  FeedChest.state.feeds.map((feed, i) => {
                     return <FeedNotification read={feed.read} bookmarked={feed.bookmarked} message={feed.message} repoName={feed.repo_name} id={feed.id} key={i}/>
                   })
                 }

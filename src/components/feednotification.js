@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import './feednotification.css';
 import ApiRoutes from '../api_routes'
 import NotificationManager from '../managers/notification_manager'
+import FeedManager from '../managers/feed_manager';
 
 const { f } = window;
 
 class FeedNotification extends Component {
 
   handleClick = () => {
-    f(ApiRoutes.read_feed(this.props.id)).then((content) => {NotificationManager.update()})
+    f(ApiRoutes.read_feed(this.props.id)).then((content) => { NotificationManager.update(); FeedManager.update(); })
   }
 
   render () {
@@ -17,7 +18,7 @@ class FeedNotification extends Component {
     if (this.props.read) {
       feedClass += "read";
     }
-    
+
     if (this.props.bookmarked) {
         bookmarkClass += "bookmark"
     }else{
