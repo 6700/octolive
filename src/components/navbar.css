@@ -1,7 +1,11 @@
 .navbar-default{
 	background-color: #594F4F !important;
 	margin: 0 !important;
+	font-family: 'Raleway', sans-serif;
+	font-weight: bold;
+	letter-spacing: 1px;
 	border: 0 !important;
+	font-size: 15px;
 }
 .navbar-default a{
 	color: white !important;
@@ -10,8 +14,20 @@
 	margin-right: 10px;
 	border-radius: 50%;
 }
+.navbar-left{
+	padding: 5px !important;
+	margin-bottom: 0px;
+}
+.navbar-left li{
+	margin-right: 10px;
+	float: left;
+}
 .routes{
-	height: 60px;
+	font-family: 'Raleway', sans-serif;
+	font-weight: bold;
+	letter-spacing: 1px;
+	font-size: 16px;
+	height: 50px;
 	display: flex;
 	text-align: center;
 	align-items: center;
