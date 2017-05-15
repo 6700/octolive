@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web');
 .hero{
 	display: flex;
 	flex-direction: column;
@@ -101,9 +102,26 @@ button a{
 	align-items: center;
 	justify-content: center;
 }
-.line{
-}
 .about  li{
 	text-decoration: none;
 	list-style: none;	
+}
+.credits{
+	color: white;
+	height: 40px;
+	font-size: 17px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #141422;
+}
+.credits p{
+	font-family: 'Titillium Web', sans-serif;
+	text-align: end;
+	margin:0px;
+}
+.credits a{
+	font-weight: bold;
+	text-decoration: none;
+	color: white;
 }

@@ -47,7 +47,7 @@ class Navbar extends Component {
     } else {
       return (
         <ul className="nav navbar-nav navbar-right">
-          <li>
+          <li className="not-logged">
             <a onClick={this.logIn} href="#">
               Iniciar sesión
             </a>

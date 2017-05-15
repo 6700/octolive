@@ -50,18 +50,14 @@ class Landing extends Component {
     			</div>
     		</div>
     	</div>
-    	{/* <div className="container">
-    		<div className="about">
-    		<img src="/vline.gif" width="1" height="80%" hspace="0" border="0" />
-    			<ul >
-    				<li></li>
-    				<li></li>
-    			</ul>
-    		</div>
-    	</div> */}
+        <div className="credits container-fluid">
+            <div className="col-xs-12">
+                <p>created by: <a href="hugofarji.me">hugofarji.me</a> & <a href="guadalupelazzo.me">guadalupelazzo.me</a> Octolive logo by: <a href="#">Yasmin Pachano</a></p>
+            </div>
+        </div>
     </div>
     )
-
+    
   }
 }
 
