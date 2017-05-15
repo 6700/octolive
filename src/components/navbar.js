@@ -22,17 +22,27 @@ class Navbar extends Component {
   renderUsername = () => {
     if(AuthenticationChest.state.isLogged){
       return (
-        <ul className="nav navbar-nav navbar-right">       
-          <li className="user-data">
-            <a href="#">
-              <img src={AuthenticationChest.state.user.avatar_url} height={30} alt=""/>
-              @{ AuthenticationChest.state.user.show_name }
-            </a>
-          </li>
-          <li>
-            <a onClick={this.logOut} href="#">Log out</a>
-          </li>
-        </ul>
+        <div className="container-fluid">
+          <ul className="navbar-left">
+            <li className="routes ">
+                <a href="/#/repositories">Repositories</a>
+            </li>
+            <li className="routes">
+              <a href="#">Feed</a>
+            </li>
+          </ul>
+          <ul className="nav navbar-nav navbar-right">       
+            <li className="user-data">
+              <a href="#">
+                <img src={AuthenticationChest.state.user.avatar_url} height={30} alt=""/>
+                @{ AuthenticationChest.state.user.show_name }
+              </a>
+            </li>
+            <li>
+              <a onClick={this.logOut} href="#">Log out</a>
+            </li>
+          </ul>
+        </div>
       );
     } else {
       return (
@@ -50,7 +60,7 @@ class Navbar extends Component {
   render() {
     return (
       <nav className="navbar navbar-default">
-        <div className="container">
+        <div className="container-fluid">
           <div className="navbar-header">
             <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
               <span className="sr-only">Toggle navigation</span>
@@ -68,8 +78,7 @@ class Navbar extends Component {
               </div>
             </form>
             { this.renderUsername() }
-            <div className="routes navbar-collapse">
-              <a href="/#/repositories">Repositories</a></div>
+            
           </div>
         </div>
       </nav>
