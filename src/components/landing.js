@@ -13,7 +13,7 @@ class Landing extends Component {
     <div>
     	<div className="hero">
     		<div className="logo">
-    			<img src="/images/logo-octolive.png" alt="logo"/>
+    			<img src="/images/logo-octolive-beta.png" alt="logo"/>
     		</div>
     		<div className="title">
     			<h1>Octolive</h1>
