@@ -50,7 +50,8 @@ class GithubInteractor
               number: issue["number"],
               repository: repository,
               title: issue["title"],
-              body: issue["body"]
+              body: issue["body"],
+              state: issue['state']
               })
           end
         end

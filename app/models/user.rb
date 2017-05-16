@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :collaborations
   has_many :repositories, through: :collaborations
+  has_many :issues, through: :repositories
   has_many :events
 
   def self.create_from_omniauth(_provider, info)
