@@ -1,0 +1,17 @@
+/* TEAM */
+
+- Guadalupe Lazo
+  - Frontend Developer
+  - React lover & constant learner
+  - @guadalazzo on Github & @Waduchis at Twitter
+
+- Hugo Farji
+  - Stupid Backend developer
+  - Ruby, NodeJS, and peace
+  - @hdf1986 (Github, Twitter)
+  - hugo@6700.com.ar
+
+/* THANKS */
+
+- Yasmin Pachano for creating our logo! ❤
+- Agustina Alcaraz for helping our stupid Backend developer with the translations!

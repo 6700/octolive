@@ -48,3 +48,7 @@
 	text-decoration: none !important;
 
 }
+
+.navbar-brand {
+	margin-top:5px;
+}

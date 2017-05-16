@@ -51,7 +51,7 @@ class Landing extends Component {
     				</div>
     				<div className="block col-lg-4 col-sm-4">
     					<p><i className="fa fa-newspaper-o" aria-hidden="true"></i></p>
-    					<h2>Notifiactions</h2>
+    					<h2>Notifications</h2>
     					<p className="descript-text">
                             We keep you up-to-date with great notifications
                             <br/>Issues, comments, Pull Request, Tests and builds altogether in one octo-body
@@ -64,9 +64,14 @@ class Landing extends Component {
     			</div>
     		</div>
     	</div>
-        <div className="credits container-fluid">
-            <div className="col-xs-12">
-                <p>created by: <a href="hugofarji.me">hugofarji.me</a> & <a href="guadalupelazzo.me">guadalupelazzo.me</a> Octolive logo by: <a href="#">Yasmin Pachano</a></p>
+        <div className="credits container-fluid display-block-xs">
+            <div className="col-xs-12 col-sm-6 text-center-xs">
+                Octolive is an opensource project, you can find our code at 
+                 <a href="https://github.com/6700/octolive"> our repo page <i className="fa fa-github" aria-hidden="true"></i></a>
+            </div>
+            <div className="col-xs-12 col-sm-6 text-center-xs">
+                <p className="text-center-xs col-xs-12">Created by: <a href="http://guadalupelazzo.me">Guadalupe Lazzo</a> & <a href="https://hugofarji.me">Hugo Farji</a>
+                <br/>Octolive logo by: <a href="#">Yasmin Pachano</a></p>
             </div>
         </div>
     </div>
