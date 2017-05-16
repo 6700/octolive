@@ -108,7 +108,7 @@ button a{
 }
 .credits{
 	color: white;
-	height: 40px;
+	height: 60px;
 	font-size: 17px;
 	display: flex;
 	justify-content: center;
@@ -124,4 +124,14 @@ button a{
 	font-weight: bold;
 	text-decoration: none;
 	color: white;
+}
+
+@media only screen and (max-width : 480px) {
+  .display-block-xs {
+    display: block;
+  }
+
+  .text-center-xs {
+    text-align: center !important;
+  }
 }

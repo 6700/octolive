@@ -49,7 +49,7 @@ class Navbar extends Component {
         <ul className="nav navbar-nav navbar-right">
           <li className="not-logged">
             <a onClick={this.logIn} href="#">
-              Iniciar sesión
+              Log in
             </a>
           </li>
         </ul>
