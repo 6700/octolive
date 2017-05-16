@@ -19,7 +19,7 @@ class Landing extends Component {
     			<h1>Octolive</h1>
     		</div>
     		<div className="subtitle">
-    			<h2>Make github notifications great again! </h2>
+    			<h2>Make Github notifications great again! </h2>
     		</div>
     		<button onClick={this.logIn} className="btn btn-default"><i className="fa fa-github" aria-hidden="true"></i>Sign in</button>
     	</div>
@@ -29,21 +29,35 @@ class Landing extends Component {
     			<div className="row">
     				<div className="block col-lg-4 col-sm-4">
 
-    					<p><i className="fa fa-snowflake-o fa-5x" aria-hidden="true"></i></p>
+    					<p><i className="fa fa-bolt fa-5x" aria-hidden="true"></i></p>
     					<h2>Realtime</h2>
-    					<p className="descript-text">Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+    					<p className="descript-text">
+                            Enjoy your notifications as never before. 
+                            <br/>No waiting & no worries. 
+                            <br/>For free! 
+                        </p>
     					<p><a className="btn btn-default" href="#" role="button">View details &raquo; 	</a></p>
     				</div>
     				<div className="block col-lg-4 col-sm-4">
-    					<p><i className="fa fa-user-circle" aria-hidden="true"></i></p>
-    					<h2>Heading</h2>
-    					<p className="descript-text">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+    					<p><i className="fa fa-cog" aria-hidden="true"></i></p>
+    					<h2>Personalizable</h2>
+    					<p className="descript-text">
+                            We are 8x more flexible than your old-school notifications. 
+                            <br/>100% personalized for you (yes, you!)
+                            <br/>You can twist our tentacles as you wish
+
+                        </p>
     					<p><a className="btn btn-default" href="#" role="button">View details &raquo;</a></p>
     				</div>
     				<div className="block col-lg-4 col-sm-4">
-    					<p><i className="fa fa-handshake-o" aria-hidden="true"></i></p>
-    					<h2>Heading</h2>
-    					<p className="descript-text">Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+    					<p><i className="fa fa-newspaper-o" aria-hidden="true"></i></p>
+    					<h2>Notifiactions</h2>
+    					<p className="descript-text">
+                            We keep you up-to-date with great notifications
+                            <br/>Issues, comments, Pull Request, Tests and builds altogether in one octo-body
+                            <br/>Let your F5 rest & relax, we got your back.
+                           
+                        </p>
     					<p><a className="btn btn-default" href="#" role="button">View details &raquo;</a></p>
     				</div>
 
