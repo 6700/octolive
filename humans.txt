@@ -1,9 +1,10 @@
 /* TEAM */
 
-- Guadalupe Lazo
+- Guadalupe Lazzo
   - Frontend Developer
   - React lover & constant learner
   - @guadalazzo on Github & @Waduchis at Twitter
+  - guadalupelazzo@gmail.com
 
 - Hugo Farji
   - Stupid Backend developer
