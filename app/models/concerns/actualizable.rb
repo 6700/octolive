@@ -12,7 +12,7 @@ module Actualizable
       @@actualizable_fields ||= []
     end
 
-    def self.acts_as_actualizable field
+    def self.acts_as_actualizable *field
       actualizable_fields.push(*field)
     end
   end
