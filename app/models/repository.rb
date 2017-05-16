@@ -1,4 +1,8 @@
 class Repository < ApplicationRecord
+  include Actualizable
+
+  acts_as_actualizable :last_issues_etag
+
   belongs_to :owner
   has_many :collaborations, dependent: :destroy
   has_many :users, through: :collaborations
