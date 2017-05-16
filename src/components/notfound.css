@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css?family=Arvo');
+
+.nf{
+	background-color: #cc2a41;
+	background-image: url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%23e8caa4' fill-opacity='0.4'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.not-found{
+	height: calc(100vh - 60px);
+	width: 100%;
+	display:flex;	
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+.not-found h1{
+	color: white;
+	font-weight: bold;
+	font-family: 'Arvo', serif;
+}
+.not-found p{
+	font-family: 'Arvo', serif;
+	color: white;
+	font-size: 26px;
+	font-weight: bold;
+}
+.not-found img{
+	height: 300px;
+}

@@ -10,7 +10,9 @@ import AuthenticationManager from './managers/authentication_manager'
 import Repositories from './components/repositories.js'
 import Home from './components/home'
 import Landing from './components/landing'
+import NotFound from './components/notfound'
 import { Route, Switch } from 'react-router-dom';
+
 
 
 const AuthenticationChest = window.AuthenticationChest;
@@ -33,11 +35,15 @@ class App extends Component {
                  <div>
                   <Route exact path='/' component={Home} />
                   <Route exact path='/repositories' component={Repositories} />
+                  <Route path="*" component={NotFound} />
                   </div>
                   )
               } else {
                 return (
+                <div>
                   <Route exact path='/' component={Landing}/>
+                  <Route path="*" component={NotFound} />
+                </div> 
                 )
               }
             })()
