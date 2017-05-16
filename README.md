@@ -1,5 +1,7 @@
 # Octolive
 
+![https://raw.githubusercontent.com/6700/octolive/master/screenshot.png](https://raw.githubusercontent.com/6700/octolive/master/screenshot.png)
+
 When you manage or contribute in more than 1 active proyects in Github, you start noticing that Github Notifications are pretty boring.
 
 This proyect tries to solve that, providing a better notification system, in realtime!
