@@ -13,7 +13,9 @@ class GithubClient
   end
 
   def pull_requests(repository_name, last_etag=nil)
-    get("/repos/#{repository_name}/pulls", last_etag: last_etag)
+    get("/repos/#{repository_name}/pulls", {
+      state: :all
+    }, last_etag: last_etag)
   end
 
   def issues(repository_name, last_etag=nil)

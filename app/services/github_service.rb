@@ -18,7 +18,7 @@ class GithubService
     new_client.pull_requests(repository_full_name, since)
   end
 
-  def issues repository_full_name, since
+  def issues(repository_full_name, since)
     new_client.issues(repository_full_name, since)
   end
 
@@ -42,7 +42,6 @@ class GithubService
   def client
     Octokit.auto_paginate = true unless Octokit.auto_paginate
     @client ||= Octokit::Client.new(access_token: access_token)
-    #raise 'noo'
   end
 
   def new_client
