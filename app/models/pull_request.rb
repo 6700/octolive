@@ -9,11 +9,12 @@ class PullRequest < ApplicationRecord
 
   def create_events
     users.each do |user|
+      return unless state.to_sym == :open
       Event.create(
         action_type: :pull_request,
         action_id: id,
         subtype: :created,
-        message: "Open pull request ##{number}: #{title}",
+        message: "Open pull request ##{number}: #{title}"
         user: user
       )
     end
