@@ -13,7 +13,7 @@ class PullRequest < ApplicationRecord
         action_type: :pull_request,
         action_id: id,
         subtype: :created,
-        message: "Pull request ##{number}: #{title}",
+        message: "Open pull request ##{number}: #{title}",
         user: user
       )
     end
