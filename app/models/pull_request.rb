@@ -25,7 +25,7 @@ class PullRequest < ApplicationRecord
     return unless state.to_sym == :merged
     users.each do |user|
       Event.create(
-        action_type: :issue,
+        action_type: :pull_request,
         action_id: id,
         subtype: :merged,
         message: "Merged pull request ##{number}: #{title}",
@@ -38,7 +38,7 @@ class PullRequest < ApplicationRecord
     return unless state.to_sym == :closed
     users.each do |user|
       Event.create(
-        action_type: :issue,
+        action_type: :pull_request,
         action_id: id,
         subtype: :closed,
         message: "Closed pull request ##{number}: #{title}",
