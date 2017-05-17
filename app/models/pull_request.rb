@@ -4,6 +4,7 @@ class PullRequest < ApplicationRecord
 
   after_create :create_events
   after_update :create_close_events, if: :state_changed?
+  after_update :create_merge_events, if: :state_changed?
 
   validates :uid, uniqueness: true
 
@@ -15,6 +16,19 @@ class PullRequest < ApplicationRecord
         action_id: id,
         subtype: :created,
         message: "Open pull request ##{number}: #{title}",
+        user: user
+      )
+    end
+  end
+
+  def create_close_events
+    return unless state.to_sym == :merged
+    users.each do |user|
+      Event.create(
+        action_type: :issue,
+        action_id: id,
+        subtype: :closed,
+        message: "Merged pull request ##{number}: #{title}",
         user: user
       )
     end
