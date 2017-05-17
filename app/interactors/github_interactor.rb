@@ -27,7 +27,8 @@ class GithubInteractor
               number: pull_request["number"],
               title: pull_request["title"],
               body: pull_request["body"],
-              repository: repository
+              repository: repository,
+              state: pull_request['state']
             })
           end
         end
@@ -55,7 +56,7 @@ class GithubInteractor
               })
           end
         end
-      end   
+      end
       repository.update_if_changed(last_issues_etag: service.last_response.headers["etag"])
       flush_renew_data
     end
@@ -79,7 +80,7 @@ class GithubInteractor
       next_rate_reset: Time.at(service.last_response.headers['x-ratelimit-reset'].to_i),
     )
   end
-  
+
   def check_availability
     return if user.can_request?
     flush_renew_data
