@@ -17,17 +17,19 @@ class GithubClient
   end
 
   def issues(repository_name, last_etag=nil)
-    get("/repos/#{repository_name}/issues", last_etag: last_etag)
+    get("/repos/#{repository_name}/issues", {
+      state: :all
+    }, last_etag: last_etag)
   end
 
 
-  def get(url, last_etag: nil)
+  def get(url, params = {}, last_etag: nil)
     last_etag ||= ""
     @last_response = self.class.get(url, {
-      query: {
+      query: params.merge({
         access_token: access_token,
         per_page: 100
-      },
+      }),
       headers: {
         "User-Agent" => "Really-Working-Kit",
         "If-None-Match" => last_etag
