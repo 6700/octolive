@@ -9,7 +9,7 @@ class PullRequest < ApplicationRecord
 
   def create_events
     users.each do |user|
-      return unless state.to_sym == :open
+      return unless state.to_s.to_sym == :open
       Event.create(
         action_type: :pull_request,
         action_id: id,
