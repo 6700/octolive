@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def paginated_resources(resources)
-    @paginated_resources ||= resources.page(page).per(50)
+    @paginated_resources ||= resources.page(page).per(30)
   end
 
   def page
