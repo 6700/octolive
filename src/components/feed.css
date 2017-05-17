@@ -33,3 +33,18 @@
 	height: calc(100vh - 111px);
 	overflow-y: scroll;
 }
+.no-feed{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	height: calc(100vh - 165px);
+	color: #594F4F;
+	border-radius: 10px;
+	font-size: 18px;
+	font-style: italic;
+	font-family: 'Arvo', serif;
+}	
+.no-feed img{
+	height: 200px;
+}

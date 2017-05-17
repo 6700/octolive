@@ -35,19 +35,16 @@ class App extends Component {
                  <div>
                   <Route exact path='/' component={Home} />
                   <Route exact path='/repositories' component={Repositories} />
-                  <Route path="*" component={NotFound} />
                   </div>
                   )
               } else {
                 return (
-                <div>
                   <Route exact path='/' component={Landing}/>
-                  <Route path="*" component={NotFound} />
-                </div> 
                 )
               }
             })()
           }
+          <Route component={NotFound} />
         </Switch>
       </div>
     );
