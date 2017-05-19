@@ -7,7 +7,7 @@ class RepositoriesManager {
     f(ApiRoutes.repositories)
         .then((content) => {
           RepositoriesChest.setState({
-              repositories: content.data
+              repositories: content
           })
         })
   }
