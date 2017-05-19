@@ -6,6 +6,7 @@ export default (() => {
     profile: api_url + "/api/v1/users/me",
     notification: api_url + "/api/v1/notifications",
     feeds: api_url + "/api/v1/feeds",
+    repositories: api_url + "/api/v1/repositories",
     read_feed: (id) => { return api_url + "/api/v1/feeds/" + id + "/read"}
   }
 })()

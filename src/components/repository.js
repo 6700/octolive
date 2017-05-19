@@ -19,20 +19,20 @@ class Repository extends Component {
             })
     }
   render () {
-	
+
     return (
     <div className="repository col-sm-6 col-md-4 col-xs-12 col-lg-4">
     	<div className="all-content col-xs-12">
 	        <div className="col-xs-12 content">
 				<nav className="repo-desc">
 			    	<div className="col-xs-3">
-				    	<img src="https://mir-s3-cdn-cf.behance.net/projects/202/df3a7d24539351.55077d06eed9a.png" alt="avatar" />
+				    	<img src={this.props.owner.avatar_url} alt="avatar" />
 			    	</div>
 			    	<div className="col-xs-9 repo-name-user">
 			    		<div className="col-xs-12 name-and-button">
 			    			<div className="col-xs-8">
-				    			<h2>octolive</h2>
-				    			<p>hdf1986</p>	
+				    			<h2>{this.props.name}</h2>
+				    			<p>@{this.props.owner.name}</p>
 			    			</div>
 			    			<div className="col-xs-4 favourite">
 			    				<i className="fa fa-star-o" aria-hidden="true"></i>

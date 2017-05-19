@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-import './components/favorite_repos.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import { HashRouter } from 'react-router-dom';
