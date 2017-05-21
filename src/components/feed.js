@@ -37,7 +37,7 @@ class Feed extends Component {
        </div>
        <div className="refresh-bar ">
             <div className="col-xs-2 col-sm-1 col-lg-1 col-xs-offset-5 col-sm-offset-7 col-lg-offset-77">
-                <button  onClick={()=>{FeedManager.update(),NotificationManager.update()}} className="refresh-button"> <i className="fa fa-refresh" aria-hidden="true"></i></button>
+                <button  onClick={()=>{FeedManager.update() ; NotificationManager.update()}} className="refresh-button"> <i className="fa fa-refresh" aria-hidden="true"></i></button>
             </div>
         </div>
          <div className="notifications col-xs-12">
