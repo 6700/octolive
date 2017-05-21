@@ -1,12 +1,15 @@
 .repositories{
-	height: calc(100vh - 60px);
+	height: calc(100vh - 65px);
+}
+.container{
+	height: calc(100vh - 65px);
 }
 .repo-box{
 	overflow-y: scroll;
 	margin-top: 10px;
 	border-radius: 8px 8px 0px 0px;
 	border:1px solid #45ADA8;
-	height: calc(100vh - 130px);
+	height: calc(100vh - 135px);
 }
 .add-repo{
 	margin-top: 10px;

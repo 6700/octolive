@@ -30,11 +30,11 @@ class Repository extends Component {
 			    	</div>
 			    	<div className="col-xs-9 repo-name-user">
 			    		<div className="col-xs-12 name-and-button">
-			    			<div className="col-xs-8">
+			    			<div className="col-xs-9">
 				    			<h2>{this.props.name}</h2>
 				    			<p>@{this.props.owner.name}</p>
 			    			</div>
-			    			<div className="col-xs-4 favourite">
+			    			<div className="col-xs-3 favourite">
 			    				<i className="fa fa-star-o" aria-hidden="true"></i>
 			    			</div>
 			    		</div>
@@ -46,8 +46,8 @@ class Repository extends Component {
 	    		<SidebarLine text="Pull Requests" icon="code-fork" notificationsCount={this.state.notificationsCount.pull_request_count}/>
 	    		<SidebarLine text="Mentions" icon="commenting-o" notificationsCount={this.state.notificationsCount.mentions_count}/>
 	    		<SidebarLine text="Issues" icon="exclamation-circle" notificationsCount={this.state.notificationsCount.issues_count}/>
-				<button className="btn-access refresh-button"> <p>Acceder</p></button>
 	    	</div>
+				<button className="btn-access refresh-button"> <p>Acceder</p></button>
     	</div>
     </div>
     )
