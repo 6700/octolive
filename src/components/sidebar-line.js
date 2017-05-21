@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import './sidebar-line.css';
 class SidebarLine extends Component {
     renderNotifications = () => {
-        if (this.props.notificationsCount > 0) {
+        if (this.props.notificationsCount > 0 && this.props.notificationsCount<100) {
             return (
                 <div className="number">
                     <p>{this.props.notificationsCount}</p>
                 </div>
             )
+        }else if (this.props.notificationsCount>99){
+            return(
+                <div className="number">
+                    <p>+99</p>
+                </div>
+                )
         }
     }
   render () {
