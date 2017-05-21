@@ -18,7 +18,8 @@ class Feed extends Component {
 
     componentDidMount() {
       FeedChest.register(this);
-      FeedManager.update()
+      FeedManager.update();
+      setInterval(()=>{FeedManager.update(); NotificationManager.update()},15000);
     }
   render () {
 
