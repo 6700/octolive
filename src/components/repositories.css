@@ -1,7 +1,7 @@
 .repositories{
 	height: calc(100vh - 65px);
 }
-.container{
+.repositories .container{
 	height: calc(100vh - 65px);
 }
 .repo-box{
