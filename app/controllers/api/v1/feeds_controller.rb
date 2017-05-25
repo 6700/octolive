@@ -1,7 +1,7 @@
 class Api::V1::FeedsController < ApplicationController
   AUTHORIZED_TYPES = [:inbox]
   before_action :authenticate_user!, only: [:index, :read]
-  before_action :set_feed, only: [:read]
+  before_action :set_feed, only: [:read, :archive]
 
   def index
     render json: paginated(feeds)
