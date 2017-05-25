@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       end
       resources :feeds, only: [:index] do
         get :read
+        get :archive
       end
 
       resources :users, only: [] do
