@@ -23,7 +23,7 @@ class Api::V1::FeedsController < ApplicationController
   end
 
   def feeds
-    if AUTHORIZED_TYPES.includes?(params[:type].to_sym)
+    if AUTHORIZED_TYPES.include?(params[:type].to_sym)
       @feeds ||= current_user.events.send(params[:type].to_sym).order(id: :desc)
     else
       @feeds ||= current_user.events.order(id: :desc)
