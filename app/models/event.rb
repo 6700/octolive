@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   belongs_to :user
 
   scope :inbox, -> { where(archived: false) }
-  scope :archived, -> { all }
+  scope :archived, -> { where(archived: true) }
   scope :pending, -> { all }
   scope :important, -> { all }
   scope :releases, -> { all }
