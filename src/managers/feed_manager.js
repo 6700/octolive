@@ -4,7 +4,7 @@ const { FeedChest, f } = window;
 
 class NotificationManager {
   update = () => {
-    f(ApiRoutes.feeds, { queryParams: { type: "feed" }})
+    f(ApiRoutes.feeds, { queryParams: { type: "inbox" }})
         .then((content) => {
           FeedChest.setState({
             feeds: content.data.map( (feed) => {
