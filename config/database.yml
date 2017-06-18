@@ -2,18 +2,18 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: rails-template
-  password: rails-template
+  username: octolive
+  password: octolive
 
 development:
   <<: *default
-  database: rails-template_development
-  
+  database: octolive_development
+
 test:
   <<: *default
-  database: rails-template_test
+  database: octolive_test
 
 production:
   <<: *default
-  database: rails-template_production
+  database: octolive_production
   password: <%= ENV['RAILS-TEMPLATE_DATABASE_PASSWORD'] %>
