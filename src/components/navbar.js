@@ -1,11 +1,27 @@
 import React, { Component } from 'react';
 import AuthenticationChest from '../chests/authentication_chest';
-import AuthenticationManager from '../managers/authentication_manager'
+import AuthenticationManager from '../managers/authentication_manager';
+import NotificationManager from '../managers/notification_manager';
+const { NotificationChest } = window;
+
 import './navbar.css';
 
 
 class Navbar extends Component {
+  componentWillUpdate=()=> {
+    var counter = NotificationChest.state.notificationsCount.inbox_count + NotificationChest.state.notificationsCount.archived_count + NotificationChest.state.notificationsCount.pending_count + NotificationChest.state.notificationsCount.important_count + NotificationChest.state.notificationsCount.releases_count + NotificationChest.state.notificationsCount.pull_requests_count + NotificationChest.state.notificationsCount.mentions_count + NotificationChest.state.notificationsCount.issues_count 
+    
+      if (counter===0) {
+        document.title = 'Octolive'
+      } else if (counter<100) {
+        document.title = 'Octolive ('+ counter + ')'
+      } else {
+        document.title = 'Octolive (+99)'
+      }
+ }
   componentDidMount = () => {
+    NotificationManager.update()
+    NotificationChest.register(this)
     AuthenticationChest.register(this)
   }
 

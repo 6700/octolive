@@ -10,8 +10,7 @@ class Sidebar extends Component {
       NotificationManager.update()
       NotificationChest.register(this)
     }
-
-    componentWillUnmount () {
+ componentWillUnmount () {  
       NotificationChest.unregister(this)
     }
 
