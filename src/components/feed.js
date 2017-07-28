@@ -5,6 +5,9 @@ import FeedNotification from './feednotification.js';
 import NotificationManager from '../managers/notification_manager';
 const { FeedChest } = window;
 class Feed extends Component {
+  MASSIVE_ACTIONS = {
+    read: () => {}
+  }
   constructor (props) {
     super(props)
     this.state = { feeds: [] }
