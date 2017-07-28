@@ -9,9 +9,8 @@ import './navbar.css';
 
 class Navbar extends Component {
   componentWillUpdate=()=> {
-    var counter = NotificationChest.state.notificationsCount.inbox_count + NotificationChest.state.notificationsCount.archived_count + NotificationChest.state.notificationsCount.pending_count + NotificationChest.state.notificationsCount.important_count + NotificationChest.state.notificationsCount.releases_count + NotificationChest.state.notificationsCount.pull_requests_count + NotificationChest.state.notificationsCount.mentions_count + NotificationChest.state.notificationsCount.issues_count 
-    
-      if (counter===0) {
+    var counter = NotificationChest.state.notificationsCount.inbox_count + NotificationChest.state.notificationsCount.archived_count + NotificationChest.state.notificationsCount.pending_count + NotificationChest.state.notificationsCount.important_count + NotificationChest.state.notificationsCount.releases_count + NotificationChest.state.notificationsCount.pull_requests_count + NotificationChest.state.notificationsCount.mentions_count + NotificationChest.state.notificationsCount.issues_count
+      if (counter === 0) {
         document.title = 'Octolive'
       } else if (counter<100) {
         document.title = 'Octolive ('+ counter + ')'
@@ -47,7 +46,7 @@ class Navbar extends Component {
               <a href="#">Feed</a>
             </li>
           </ul>
-          <ul className="nav navbar-nav navbar-right">       
+          <ul className="nav navbar-nav navbar-right">
             <li className="user-data">
               <a href="#">
                 <img src={AuthenticationChest.state.user.avatar_url} height={30} alt=""/>
@@ -94,7 +93,7 @@ class Navbar extends Component {
               </div>
             </form>
             { this.renderUsername() }
-            
+
           </div>
         </div>
       </nav>
