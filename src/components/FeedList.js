@@ -3,15 +3,24 @@ import './feed.css';
 import FeedManager from '../managers/feed_manager';
 import FeedNotification from './feednotification.js';
 import NotificationManager from '../managers/notification_manager';
+import _ from 'lodash';
 const { FeedChest } = window;
+
 class FeedList extends Component {
   MASSIVE_ACTIONS = {
-    read: () => {}
+    placeholder: {
+      text: 'Acción',
+      action: () => {}
+    },
+    read: {
+      text: 'Marcar como leido',
+      action: () => {}
+    }
   }
 
   constructor (props) {
     super(props)
-    this.state = { feeds: [] }
+    this.state = { feeds: null }
   }
 
   compoenntWillUnmount () {
@@ -25,27 +34,34 @@ class FeedList extends Component {
   }
 
   handleChange (e) {
-    this.MASSIVE_ACTIONS[e.targe.value]();
+    this.MASSIVE_ACTIONS[e.targe.value].action();
   }
 
   handleCheckAll = () => {
+    // TBI
+  }
 
+  renderMassiveActions = () => {
+    return (
+      <select className="selector-feed" name="select" onChange={this.handleChange}>
+        {_.map(this.MASSIVE_ACTIONS, (opt, key) => {
+          return <option value={key}
+                         key={key}>
+                    {opt.text}
+                 </option>
+        })}
+      </select>
+    )
   }
 
   render () {
-
     return (
     <div className="col-xs-12 box">
       <div className="feed">
         <div className="col-xs-4">
-          <div className="side-inputs">
+          <div className="side-inputs col-xs-12">
             <input type="checkbox" onChange={this.handleCheckAll}/>
-            <select className="selector-feed" name="select" onChange={this.handleChange}>
-              <option value="-1" defaultValue>Acción</option>
-              <option value="read" defaultValue>Marcar como leido </option>
-              <option value="value2">Archivar</option>
-              <option value="value3">Recordarme más tarde</option>
-            </select>
+            {this.renderMassiveActions()}
           </div>
         </div>
         <div className="refresh-bar ">
@@ -69,8 +85,13 @@ class FeedList extends Component {
               } else {
                 return (
                   <div className="no-feed col-xs-12">
-                      <img src="/images/logo-octolive-404.png" alt="notfound" />
-                      <p>You don't have any notification to show! <br></br> Active your feed by working with github.</p>
+                    <img src="/images/logo-octolive-404.png" alt="notfound" />
+                    <p>
+                      You don{"'"}t have any notification to show!
+                      <br>
+                      </br>
+                      Active your feed by working with github.
+                    </p>
                   </div>
                 )
               }
