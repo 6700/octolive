@@ -28,25 +28,18 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar/>
-        <Switch>
-          {
-            (() => {
-              if(AuthenticationChest.state.isLogged) {
-                return (
-                 <div>
-                  <Route exact path='/' component={Home} />
-                  <Route exact path='/repositories' component={Repositories} />
-                  </div>
-                  )
-              } else {
-                return (
-                  <Route exact path='/' component={Landing}/>
-                )
-              }
-            })()
+          {AuthenticationChest.state.isLogged ?
+            <Switch>
+              <Route exact path='/' component={Home} />
+              <Route exact path='/repositories' component={Repositories} />
+            </Switch>
+            :
+            <Switch>
+              <Route exact path='/' component={Landing}/>
+              <Route component={NotFound} />
+            </Switch>
+
           }
-          <Route component={NotFound} />
-        </Switch>
       </div>
     );
   }
