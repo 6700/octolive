@@ -24,17 +24,17 @@ class FeedNotification extends Component {
     }
 
     if (this.props.bookmarked) {
-        bookmarkClass += ""
+      bookmarkClass += ""
     } else {
-        bookmarkClass += "check"
+      bookmarkClass += "check"
     }
     return (
     <div className={ feedClass }>
     	<div className="col-xs-2 col-sm-2 ">
-    		<input type="checkbox" />
+    		<input type="checkbox" checked={this.props.checked} />
     		<a href="#">
-                <i onClick={this.handleArchive} className={bookmarkClass} aria-hidden="true"></i>
-            </a>
+          <i onClick={this.handleArchive} className={bookmarkClass} aria-hidden="true"></i>
+        </a>
     	</div>
 
     	<div onClick={this.handleClick} className="col-xs-7 col-sm-7 comment">

@@ -38,7 +38,7 @@ class FeedList extends Component {
   }
 
   handleCheckAll = () => {
-    // TBI
+    FeedManager.checkAll()
   }
 
   renderMassiveActions = () => {
@@ -79,6 +79,7 @@ class FeedList extends Component {
                                           message={feed.message}
                                           repoName={feed.repo_name}
                                           id={feed.id}
+                                          checked={feed.checked}
                                           key={i}
                                           />
                 }))
