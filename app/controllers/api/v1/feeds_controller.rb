@@ -1,5 +1,5 @@
 class Api::V1::FeedsController < ApplicationController
-  AUTHORIZED_TYPES = [:inbox]
+  AUTHORIZED_TYPES = [:inbox].freeze
   before_action :authenticate_user!, only: [:index, :read]
   before_action :set_feed, only: [:read, :archive]
 
@@ -8,18 +8,19 @@ class Api::V1::FeedsController < ApplicationController
   end
 
   def read
-    @feed.update(read: true)
+    @feed.update_all(read: true)
     render json: @feed
   end
 
   def archive
-    @feed.update(archived: true)
+    @feed.update_all(archived: true)
     render json: @feed
   end
 
   private
+
   def set_feed
-    @feed = Event.find(params[:feed_id])
+    @feed = Event.where(id: params[:feed_id].split(','))
   end
 
   def feeds
