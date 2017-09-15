@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './feed.css';
-import FeedManager from '../managers/feed_manager';
-import FeedNotification from './feednotification.js';
-import NotificationManager from '../managers/notification_manager';
+import './FeedList.css';
+import FeedManager from '../../managers/feed_manager';
+import FeedNotification from '../feednotification.js';
+import NotificationManager from '../../managers/notification_manager';
 import _ from 'lodash';
 const { FeedChest } = window;
 
