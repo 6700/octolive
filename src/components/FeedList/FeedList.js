@@ -28,10 +28,6 @@ class FeedList extends Component {
     this.state = {...FeedChest.state }
   }
 
-  componentWillUpdate () {
-    debugger;
-  }
-
   compoenntWillUnmount () {
     FeedChest.unregister(this);
   }
