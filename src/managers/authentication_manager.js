@@ -26,7 +26,7 @@ class AuthenticationManager {
         })
     }
   }
-  
+
   logIn = () => {
     fetch(ApiRoutes.sign_in_redirection)
       .then((response) => response.json())
@@ -34,7 +34,7 @@ class AuthenticationManager {
         document.location.href = content.url
       })
   }
- 
+
   logOut = () => {
     AuthenticationChest.clearPersistedState();
     AuthenticationChest.setState({
@@ -53,9 +53,9 @@ class AuthenticationManager {
     }
   }
 
-  getQueryStringValue (key) {  
-    return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[.+*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
-  }  
+  getQueryStringValue (key) {
+    return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[.+*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+  }
 }
 
 export default (new AuthenticationManager());

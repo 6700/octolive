@@ -26,11 +26,12 @@ class Chest {
     delete(this.listeners[this.listeners.indexOf(listener)])
   }
 
-  setPersistedState (info = {}) {
+  setPersistedState (info = {}, callback = () => {}) {
     this.setState(info);
     var stateToPersist = this.persistedState();
     stateToPersist = Object.assign(stateToPersist, info);
     localStorage.setItem(this.chestStorageName(), JSON.stringify(stateToPersist))
+    callback();
   }
 
   persistedState () {
