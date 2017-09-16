@@ -13,7 +13,8 @@ class Issue < ApplicationRecord
         action_id: id,
         subtype: :created,
         message: "Open issue ##{number}: #{title}",
-        user: user
+        user: user,
+        link: link
       )
     end
   end
@@ -26,7 +27,8 @@ class Issue < ApplicationRecord
         action_id: id,
         subtype: :closed,
         message: "Closed issue ##{number}: #{title}",
-        user: user
+        user: user,
+        link: link
       )
     end
   end

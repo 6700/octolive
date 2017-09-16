@@ -23,7 +23,6 @@ class GithubInteractor
       service.pull_requests(repository.full_name, repository.last_pull_requests_etag).tap do |pull_requests|
         if pull_requests.code != 304 && pull_requests.code != 404
           pull_requests.each do |pull_request|
-            Rails.logger.info pull_request.inspect
             PullRequest.sync_by({ uid: pull_request["id"] }, {
               number: pull_request["number"],
               title: pull_request["title"],
@@ -54,7 +53,8 @@ class GithubInteractor
               repository: repository,
               title: issue["title"],
               body: issue["body"],
-              state: issue['state']
+              state: issue['state'],
+              link: issue['html_link']
               })
           end
         end
