@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
-import './feednotification.css';
-import ApiRoutes from '../api_routes'
-import NotificationManager from '../managers/notification_manager'
-import FeedManager from '../managers/feed_manager';
-
-const { f } = window;
+import FeedManager from '../../managers/feed_manager';
+import './Feed.css';
 
 class FeedNotification extends Component {
 
   handleClick = () => {
-    f(ApiRoutes.read_feed(this.props.id)).then((content) => { NotificationManager.update(); FeedManager.update(); })
+    FeedManager.markAsRead(this.props.id)
   }
 
   handleArchive = () => {
@@ -33,7 +29,7 @@ class FeedNotification extends Component {
       bookmarkClass += "check"
     }
     return (
-    <div className={ feedClass }>
+    <a href={this.props.link} className={ feedClass }>
     	<div className="col-xs-2 col-sm-2 ">
     		<input type="checkbox" checked={!!this.props.checked} onChange={this.handleChange}/>
     		<a href="#">
@@ -49,7 +45,7 @@ class FeedNotification extends Component {
     	</div>
     	<div onClick={this.handleClick} className=" circle">
     	</div>
-    </div>
+    </a>
     )
   }
 }

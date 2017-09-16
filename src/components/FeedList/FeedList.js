@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './FeedList.css';
 import FeedManager from '../../managers/feed_manager';
-import FeedNotification from '../feednotification.js';
 import NotificationManager from '../../managers/notification_manager';
+import Feed from '../Feed';
 import Paginator from '../Paginator'
 import EmptyAlert from '../EmptyAlert'
 import map from 'lodash/map'
@@ -80,7 +80,7 @@ class FeedList extends Component {
         <Paginator className="notifications col-xs-12"
                    onNextPage={FeedManager.fetchNextPage}
                    items={reverse(sortBy(FeedChest.state.feeds, 'id'))}
-                   itemComponent={FeedNotification}
+                   itemComponent={Feed}
                    maxPage={FeedChest.state.maxPage}
                    emptyComponent={EmptyAlert}
                    loadingComponent={EmptyAlert}
