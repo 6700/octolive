@@ -10,7 +10,7 @@ const { FeedChest, f } = window;
 
 class FeedManager {
   update = () => {
-    f(ApiRoutes.feeds, { queryParams: { type: "inbox" }})
+    f(ApiRoutes.feeds, { queryParams: { type: FeedChest.state.section }})
       .then((content) => {
         FeedChest.setState({
           feeds: map(assign(
@@ -54,6 +54,11 @@ class FeedManager {
       this.update();
       NotificationManager.update()
     })
+  }
+
+  changeSection = (section) => {
+    FeedChest.setState({ section: section, feeds: null })
+    this.update();
   }
 }
 

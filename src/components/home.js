@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FeedList from './FeedList';
-import Sidebar from './sidebar.js';
+import Sidebar from './Sidebar';
 import './home.css';
 class Home extends Component {
   render () {

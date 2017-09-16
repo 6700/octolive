@@ -23,11 +23,6 @@ class FeedList extends Component {
     }
   }
 
-  constructor (props) {
-    super(props)
-    this.state = {...FeedChest.state }
-  }
-
   compoenntWillUnmount () {
     FeedChest.unregister(this);
   }
@@ -68,7 +63,7 @@ class FeedList extends Component {
       <div className="feed">
         <div className="col-xs-4">
           <div className="side-inputs col-xs-12">
-            <input type="checkbox" onChange={this.handleCheckAll} checked={every(this.state.feeds, { checked: true })}/>
+            <input type="checkbox" onChange={this.handleCheckAll} checked={every(FeedChest.state.feeds, { checked: true })}/>
             {this.renderMassiveActions()}
           </div>
         </div>
@@ -80,16 +75,16 @@ class FeedList extends Component {
          <div className="notifications col-xs-12">
             {
              (() => {
-              if(FeedChest.state.feeds.length > 0){
+               if (FeedChest.state.feeds === null) {
+                 return (
+                   <div className="no-feed col-xs-12">
+                     <img src="/images/logo-octolive-404.png" alt="notfound" />
+                     Cargando...
+                   </div>
+                 )
+               } else if(FeedChest.state.feeds.length > 0){
                 return (FeedChest.state.feeds.map((feed, i) => {
-                 return <FeedNotification read={feed.read}
-                                          bookmarked={feed.bookmarked}
-                                          message={feed.message}
-                                          repoName={feed.repo_name}
-                                          id={feed.id}
-                                          checked={feed.checked}
-                                          key={i}
-                                          />
+                  return <FeedNotification {...feed} key={i} />
                 }))
               } else {
                 return (

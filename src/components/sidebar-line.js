@@ -1,35 +1,45 @@
 import React, { Component } from 'react';
 import './sidebar-line.css';
+import FeedManager from '../managers/feed_manager'
+
+const { NotificationChest } = window;
 class SidebarLine extends Component {
-    renderNotifications = () => {
-        if (this.props.notificationsCount > 0 && this.props.notificationsCount<100) {
-            return (
-                <div className="number">
-                    <p>{this.props.notificationsCount}</p>
-                </div>
-            )
-        }else if (this.props.notificationsCount>99){
-            return(
-                <div className="number">
-                    <p>+99</p>
-                </div>
-                )
-        }
+  renderNotifications = () => {
+    if (this.notificationsCount() > 0 && this.notificationsCount() <100) {
+      return (
+        <div className="number">
+          <p>{this.notificationsCount() }</p>
+        </div>
+      )
+    } else if (this.notificationsCount() >99){
+      return(
+        <div className="number">
+          <p>+99</p>
+        </div>
+      )
     }
+  }
+
+  notificationsCount = () => NotificationChest.state.notificationsCount[`${this.props.section}_count`]
+
+  handleClick = () => {
+    FeedManager.changeSection(this.props.section)
+  }
+
   render () {
-    var iconClass = "fa fa-" + this.props.icon;
+    var iconClass = `fa fa-${this.props.icon}`;
     return (
-             	<div className="col-xs-12 line">
-             		<div className="col-xs-1 col-lg-2 icon">
-             			<i className={iconClass} aria-hidden="true"></i>
-             		</div>
-					<div className="col-xs-7 col-lg-7">
-             			<p>{this.props.text}</p>
-					</div>	
-					<div className="col-xs-3 col-lg-3">
-						{this.renderNotifications()}
-					</div>
-             	</div>
+      <div className="col-xs-12 line" onClick={this.handleClick}>
+        <div className="col-xs-1 col-lg-2 icon">
+          <i className={iconClass} aria-hidden="true"/>
+     		</div>
+				<div className="col-xs-7 col-lg-7">
+     			<p>{this.props.text}</p>
+				</div>
+				<div className="col-xs-3 col-lg-3">
+					{this.renderNotifications()}
+				</div>
+     	</div>
     )
   }
 }
