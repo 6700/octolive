@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170916164028) do
+ActiveRecord::Schema.define(version: 20170916165122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20170916164028) do
     t.datetime "updated_at",    null: false
     t.integer  "number"
     t.string   "state"
+    t.string   "link"
     t.index ["repository_id"], name: "index_pull_requests_on_repository_id", using: :btree
   end
 

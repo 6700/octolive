@@ -16,7 +16,8 @@ class PullRequest < ApplicationRecord
         action_id: id,
         subtype: :created,
         message: "Open pull request ##{number}: #{title}",
-        user: user
+        user: user,
+        link: link
       )
     end
   end
@@ -29,7 +30,8 @@ class PullRequest < ApplicationRecord
         action_id: id,
         subtype: :merged,
         message: "Merged pull request ##{number}: #{title}",
-        user: user
+        user: user,
+        link: link
       )
     end
   end
@@ -42,7 +44,8 @@ class PullRequest < ApplicationRecord
         action_id: id,
         subtype: :closed,
         message: "Closed pull request ##{number}: #{title}",
-        user: user
+        user: user,
+        link: link
       )
     end
   end
