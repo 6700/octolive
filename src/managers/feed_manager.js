@@ -21,8 +21,8 @@ class FeedManager {
         FeedChest.setState({
           lastPage: Math.max(FeedChest.state.lastPage, page),
           feeds: map(assign(
-            mapKeys(FeedChest.state.feeds, k => k.id),
-            mapKeys(map(content.data, (i) => merge(clone(i), { checked: false })), k => k.id)
+            mapKeys(map(content.data, (i) => merge(clone(i), { checked: false })), k => k.id),
+            mapKeys(FeedChest.state.feeds, k => k.id)
           )),
           maxPage: content.metadata.total_pages
         })
@@ -51,6 +51,9 @@ class FeedManager {
   markAsRead = (ids = null) => {
     if(ids === null) return;
     f(ApiRoutes.read_feed(ids.join(','))).then(() => {
+      FeedChest.setState({
+        feeds: map(FeedChest.state.feeds, (feed) => includes(ids, feed.id) ? merge(clone(feed), {read: true}) : feed)
+      })
       this.update();
       NotificationManager.update()
     })

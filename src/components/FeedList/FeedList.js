@@ -9,6 +9,7 @@ import map from 'lodash/map'
 import every from 'lodash/every'
 import sortBy from 'lodash/sortBy'
 import reverse from 'lodash/reverse'
+import filter from 'lodash/filter'
 const { FeedChest } = window;
 
 class FeedList extends Component {
@@ -19,11 +20,11 @@ class FeedList extends Component {
     },
     read: {
       text: 'Marcar como leido',
-      action: () => FeedManager.markAsRead(map(FeedChest.state.feeds, 'id'))
+      action: (feeds) => FeedManager.markAsRead(feeds)
     },
     archive: {
       text: 'Archivar',
-      action: () => FeedManager.archive(map(FeedChest.state.feeds, 'id'))
+      action: (feeds) => FeedManager.archive(feeds)
     }
   }
 
@@ -38,8 +39,8 @@ class FeedList extends Component {
   }
 
   handleChange = (e) => {
+    this.MASSIVE_ACTIONS[e.target.value].action(map(filter(FeedChest.state.feeds, { checked: true }), 'id'));
     FeedManager.markAllAs(false);
-    this.MASSIVE_ACTIONS[e.target.value].action();
     e.target.value = Object.keys(this.MASSIVE_ACTIONS)[0]
   }
 
