@@ -14,7 +14,7 @@ class Chest {
 
   callListeners () {
     this.listeners.forEach((listener) => {
-      listener.setState(...this.state)
+      listener.setState({...this.state})
     })
   }
 

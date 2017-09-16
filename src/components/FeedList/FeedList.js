@@ -41,10 +41,11 @@ class FeedList extends Component {
   handleChange = (e) => {
     FeedManager.markAllAs(false);
     this.MASSIVE_ACTIONS[e.target.value].action();
+    e.target.value = Object.keys(this.MASSIVE_ACTIONS)[0]
   }
 
   handleCheckAll = (e) => {
-    e.preventDefault()
+    e.stopPropagation()
     FeedManager.toggleAll()
   }
 
@@ -62,14 +63,12 @@ class FeedList extends Component {
   }
 
   render () {
-    const checked = every(this.state.feeds, { checked: true });
-    console.log(checked);
     return (
     <div className="col-xs-12 box">
       <div className="feed">
         <div className="col-xs-4">
           <div className="side-inputs col-xs-12">
-            <input type="checkbox" onChange={this.handleCheckAll} checked={checked}/>
+            <input type="checkbox" onChange={this.handleCheckAll} checked={every(this.state.feeds, { checked: true })}/>
             {this.renderMassiveActions()}
           </div>
         </div>

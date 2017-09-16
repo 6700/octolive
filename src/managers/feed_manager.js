@@ -4,8 +4,9 @@ import merge from 'lodash/merge'
 import clone from 'lodash/clone'
 import map from 'lodash/map'
 import mapKeys from 'lodash/mapKeys'
+import NotificationManager from './notification_manager';
 
-const { FeedChest, f, NotificationManager } = window;
+const { FeedChest, f } = window;
 
 class FeedManager {
   update = () => {
@@ -14,7 +15,7 @@ class FeedManager {
         FeedChest.setState({
           feeds: map(assign(
             mapKeys(FeedChest.state.feeds, k => k.id),
-            mapKeys(content.data, k => k.id)
+            mapKeys(content.data.length > 0 ? merge(content.data, { checked: false }) : undefined, k => k.id)
           ))
         })
       })
@@ -26,6 +27,13 @@ class FeedManager {
     })
   }
 
+  toggle = (id = null) => {
+    if(id === null) return;
+    FeedChest.setState({
+      feeds: FeedChest.state.feeds.map((feed) => feed.id === id ? merge(clone(feed), { checked: !feed.checked }) : feed)
+    })
+  }
+
   markAllAs = (checked = false) => {
     FeedChest.setState({
       feeds: FeedChest.state.feeds.map((item) => merge(clone(item), { checked: checked }))
@@ -34,12 +42,18 @@ class FeedManager {
 
   markAsRead = (ids = null) => {
     if(ids === null) return;
-    f(ApiRoutes.read_feed(ids.join(','))).then(() => { this.update(); NotificationManager.update() })
+    f(ApiRoutes.read_feed(ids.join(','))).then(() => {
+      this.update();
+      NotificationManager.update()
+    })
   }
 
   archive = (ids = null) => {
     if(ids === null) return;
-    f(ApiRoutes.archive_feed(ids.join(','))).then(() => { this.update(); NotificationManager.update() })
+    f(ApiRoutes.archive_feed(ids.join(','))).then(() => {
+      this.update();
+      NotificationManager.update()
+    })
   }
 }
 
