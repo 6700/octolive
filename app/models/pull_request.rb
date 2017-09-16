@@ -9,8 +9,8 @@ class PullRequest < ApplicationRecord
   validates :uid, uniqueness: true
 
   def create_events
+    return unless state.to_s.to_sym == :open
     users.each do |user|
-      return unless state.to_s.to_sym == :open
       Event.create(
         action_type: :pull_request,
         action_id: id,
