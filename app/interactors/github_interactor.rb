@@ -55,7 +55,7 @@ class GithubInteractor
               title: issue["title"],
               body: issue["body"],
               state: issue['state'],
-              link: issue['html_link']
+              link: issue['title']
               })
           end
         end
