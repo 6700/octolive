@@ -29,7 +29,7 @@ class GithubInteractor
               body: pull_request["body"],
               repository: repository,
               state: pull_request['state'],
-              link: pull_request['url']
+              link: pull_request['html_url']
             })
           end
         end
