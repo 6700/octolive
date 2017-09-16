@@ -4,19 +4,27 @@ import merge from 'lodash/merge'
 import clone from 'lodash/clone'
 import map from 'lodash/map'
 import mapKeys from 'lodash/mapKeys'
+import reject from 'lodash/reject'
+import includes from 'lodash/includes'
 import NotificationManager from './notification_manager';
 
 const { FeedChest, f } = window;
 
 class FeedManager {
   update = () => {
-    f(ApiRoutes.feeds, { queryParams: { type: FeedChest.state.section }})
+    this.fetchPage(1)
+  }
+
+  fetchPage = (page = 1) => {
+    return f(ApiRoutes.feeds, { queryParams: { type: FeedChest.state.section, page: page }})
       .then((content) => {
         FeedChest.setState({
+          lastPage: Math.max(FeedChest.state.lastPage, page),
           feeds: map(assign(
             mapKeys(FeedChest.state.feeds, k => k.id),
-            mapKeys(content.data.length > 0 ? merge(content.data, { checked: false }) : undefined, k => k.id)
-          ))
+            mapKeys(map(content.data, (i) => merge(clone(i), { checked: false })), k => k.id)
+          )),
+          maxPage: content.metadata.total_pages
         })
       })
   }
@@ -51,6 +59,9 @@ class FeedManager {
   archive = (ids = null) => {
     if(ids === null) return;
     f(ApiRoutes.archive_feed(ids.join(','))).then(() => {
+      FeedChest.setState({
+        feeds: reject(FeedChest.state.feeds, (feed) => includes(ids, feed.id))
+      })
       this.update();
       NotificationManager.update()
     })
@@ -59,6 +70,10 @@ class FeedManager {
   changeSection = (section) => {
     FeedChest.setState({ section: section, feeds: null })
     this.update();
+  }
+
+  fetchNextPage = () => {
+    return this.fetchPage(FeedChest.state.lastPage + 1)
   }
 }
 

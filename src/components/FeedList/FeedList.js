@@ -3,8 +3,12 @@ import './FeedList.css';
 import FeedManager from '../../managers/feed_manager';
 import FeedNotification from '../feednotification.js';
 import NotificationManager from '../../managers/notification_manager';
+import Paginator from '../Paginator'
+import EmptyAlert from '../EmptyAlert'
 import map from 'lodash/map'
 import every from 'lodash/every'
+import sortBy from 'lodash/sortBy'
+import reverse from 'lodash/reverse'
 const { FeedChest } = window;
 
 class FeedList extends Component {
@@ -72,37 +76,15 @@ class FeedList extends Component {
             <button onClick={()=>{ FeedManager.update() ; NotificationManager.update()}} className="refresh-button"> <i className="fa fa-refresh" aria-hidden="true"></i></button>
           </div>
         </div>
-         <div className="notifications col-xs-12">
-            {
-             (() => {
-               if (FeedChest.state.feeds === null) {
-                 return (
-                   <div className="no-feed col-xs-12">
-                     <img src="/images/logo-octolive-404.png" alt="notfound" />
-                     Cargando...
-                   </div>
-                 )
-               } else if(FeedChest.state.feeds.length > 0){
-                return (FeedChest.state.feeds.map((feed, i) => {
-                  return <FeedNotification {...feed} key={i} />
-                }))
-              } else {
-                return (
-                  <div className="no-feed col-xs-12">
-                    <img src="/images/logo-octolive-404.png" alt="notfound" />
-                    <p>
-                      You don{"'"}t have any notification to show!
-                      <br>
-                      </br>
-                      Active your feed by working with github.
-                    </p>
-                  </div>
-                )
-              }
-             })()
-            }
-          </div>
-       </div>
+        <Paginator className="notifications col-xs-12"
+                   onNextPage={FeedManager.fetchNextPage}
+                   items={reverse(sortBy(FeedChest.state.feeds, 'id'))}
+                   itemComponent={FeedNotification}
+                   maxPage={FeedChest.state.maxPage}
+                   emptyComponent={EmptyAlert}
+                   loadingComponent={EmptyAlert}
+                   />
+      </div>
     </div>
     )
   }

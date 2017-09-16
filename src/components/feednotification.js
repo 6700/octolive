@@ -13,7 +13,7 @@ class FeedNotification extends Component {
   }
 
   handleArchive = () => {
-    f(ApiRoutes.archive_feed(this.props.id)).then((content) => { NotificationManager.update(); FeedManager.update(); })
+    FeedManager.archive([this.props.id]);
   }
 
   handleChange = (e) => {
