@@ -47,8 +47,8 @@ class GithubInteractor
       service.issues(repository.full_name, repository.last_issues_etag).tap do |issues|
         if issues.code != 304 && issues.code != 404
           issues.each do |issue|
-            next if issue.has_key? 'pull_request'
             Rails.logger.info issue
+            next if issue.has_key? 'pull_request'
             Issue.sync_by({ uid: issue["id"] }, {
               number: issue["number"],
               repository: repository,
