@@ -16,6 +16,10 @@ class FeedNotification extends Component {
     f(ApiRoutes.archive_feed(this.props.id)).then((content) => { NotificationManager.update(); FeedManager.update(); })
   }
 
+  handleChange = (e) => {
+    FeedManager.toggle(this.props.id)
+  }
+
   render () {
     var bookmarkClass = "bookmark fa-2x fa fa-"
     var feedClass = "feed-notification col-xs-12 ";
@@ -31,7 +35,7 @@ class FeedNotification extends Component {
     return (
     <div className={ feedClass }>
     	<div className="col-xs-2 col-sm-2 ">
-    		<input type="checkbox" checked={this.props.checked} />
+    		<input type="checkbox" checked={!!this.props.checked} onChange={this.handleChange}/>
     		<a href="#">
           <i onClick={this.handleArchive} className={bookmarkClass} aria-hidden="true"></i>
         </a>

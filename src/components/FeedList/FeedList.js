@@ -3,7 +3,8 @@ import './FeedList.css';
 import FeedManager from '../../managers/feed_manager';
 import FeedNotification from '../feednotification.js';
 import NotificationManager from '../../managers/notification_manager';
-import _ from 'lodash';
+import map from 'lodash/map'
+import every from 'lodash/every'
 const { FeedChest } = window;
 
 class FeedList extends Component {
@@ -14,13 +15,17 @@ class FeedList extends Component {
     },
     read: {
       text: 'Marcar como leido',
-      action: () => {}
+      action: () => FeedManager.markAsRead(map(FeedChest.state.feeds, 'id'))
+    },
+    archive: {
+      text: 'Archivar',
+      action: () => FeedManager.archive(map(FeedChest.state.feeds, 'id'))
     }
   }
 
   constructor (props) {
     super(props)
-    this.state = { feeds: null }
+    this.state = {...FeedChest.state }
   }
 
   compoenntWillUnmount () {
@@ -33,18 +38,21 @@ class FeedList extends Component {
     setInterval(() => { FeedManager.update(); NotificationManager.update() }, 15000);
   }
 
-  handleChange (e) {
-    this.MASSIVE_ACTIONS[e.targe.value].action();
+  handleChange = (e) => {
+    FeedManager.markAllAs(false);
+    this.MASSIVE_ACTIONS[e.target.value].action();
+    e.target.value = Object.keys(this.MASSIVE_ACTIONS)[0]
   }
 
-  handleCheckAll = () => {
-    FeedManager.checkAll()
+  handleCheckAll = (e) => {
+    e.stopPropagation()
+    FeedManager.toggleAll()
   }
 
   renderMassiveActions = () => {
     return (
       <select className="selector-feed" name="select" onChange={this.handleChange}>
-        {_.map(this.MASSIVE_ACTIONS, (opt, key) => {
+        {map(this.MASSIVE_ACTIONS, (opt, key) => {
           return <option value={key}
                          key={key}>
                     {opt.text}
@@ -60,7 +68,7 @@ class FeedList extends Component {
       <div className="feed">
         <div className="col-xs-4">
           <div className="side-inputs col-xs-12">
-            <input type="checkbox" onChange={this.handleCheckAll}/>
+            <input type="checkbox" onChange={this.handleCheckAll} checked={every(this.state.feeds, { checked: true })}/>
             {this.renderMassiveActions()}
           </div>
         </div>
