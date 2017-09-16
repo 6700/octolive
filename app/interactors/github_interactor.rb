@@ -28,7 +28,8 @@ class GithubInteractor
               title: pull_request["title"],
               body: pull_request["body"],
               repository: repository,
-              state: pull_request['state']
+              state: pull_request['state'],
+              link: pull_request['url']
             })
           end
         end

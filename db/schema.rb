@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525185254) do
+ActiveRecord::Schema.define(version: 20170916164028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,8 @@ ActiveRecord::Schema.define(version: 20170525185254) do
     t.string   "repo_name"
     t.string   "uid"
     t.string   "subtype"
-    t.boolean  "archived"
+    t.boolean  "archived",    default: false
+    t.string   "link"
     t.index ["action_type", "action_id"], name: "index_events_on_action_type_and_action_id", using: :btree
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
