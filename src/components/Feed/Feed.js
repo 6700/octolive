@@ -29,7 +29,7 @@ class FeedNotification extends Component {
       bookmarkClass += "check"
     }
     return (
-    <a href={this.props.link} className={ feedClass }>
+    <a href={this.props.link} target="_blank" className={ feedClass }>
     	<div className="col-xs-2 col-sm-2 ">
     		<input type="checkbox" checked={!!this.props.checked} onChange={this.handleChange}/>
     		<a href="#">
