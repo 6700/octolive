@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :collaborations, dependent: :destroy_all
+  has_many :collaborations, dependent: :destroy
   has_many :repositories, through: :collaborations
   has_many :issues, through: :repositories
   has_many :events, dependent: :destroy
