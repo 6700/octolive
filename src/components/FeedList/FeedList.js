@@ -15,15 +15,15 @@ const { FeedChest } = window;
 class FeedList extends Component {
   MASSIVE_ACTIONS = {
     placeholder: {
-      text: 'Acción',
+      text: 'Action',
       action: () => {}
     },
     read: {
-      text: 'Marcar como leido',
+      text: 'Mark as read',
       action: (feeds) => FeedManager.markAsRead(feeds)
     },
     archive: {
-      text: 'Archivar',
+      text: 'File',
       action: (feeds) => FeedManager.archive(feeds)
     }
   }
