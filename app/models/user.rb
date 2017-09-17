@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  has_many :collaborations
+  has_many :collaborations, dependent: :destroy_all
   has_many :repositories, through: :collaborations
   has_many :issues, through: :repositories
-  has_many :events
+  has_many :events, dependent: :destroy_all
 
   def self.create_from_omniauth(_provider, info)
     create_from_omniauth_github info
