@@ -30,7 +30,7 @@ class Repository extends Component {
 			    	</div>
 			    	<div className="col-xs-9 repo-name-user">
 			    		<div className="col-xs-12 name-and-button">
-			    			<div className="col-xs-9">
+			    			<div className="col-xs-9 inside">
 				    			<h2>{this.props.name}</h2>
 				    			<p>@{this.props.owner.name}</p>
 			    			</div>
