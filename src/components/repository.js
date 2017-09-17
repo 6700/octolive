@@ -47,7 +47,7 @@ class Repository extends Component {
 	    		<SidebarLine text="Mentions" icon="commenting-o" notificationsCount={this.state.notificationsCount.mentions_count}/>
 	    		<SidebarLine text="Issues" icon="exclamation-circle" notificationsCount={this.state.notificationsCount.issues_count}/>
 	    	</div>
-				<button className="btn-access refresh-button"> <p>Acceder</p></button>
+				<button className="btn-access refresh-button"> <p>Access</p></button>
     	</div>
     </div>
     )
