@@ -1,5 +1,5 @@
 class Api::V1::FeedsController < ApplicationController
-  AUTHORIZED_TYPES = [:inbox].freeze
+  AUTHORIZED_TYPES = %i[inbox pull_requests archived issues].freeze
   before_action :authenticate_user!, only: [:index, :read]
   before_action :set_feed, only: [:read, :archive]
 
