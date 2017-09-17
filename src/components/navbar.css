@@ -1,3 +1,6 @@
+.navbar{
+	border-radius: 0 !important;
+}
 .navbar-default{
 	background-color: #594F4F !important;
 	margin: 0 !important;
@@ -5,6 +8,7 @@
 	font-weight: bold;
 	letter-spacing: 1px;
 	border: 0 !important;
+	height: 60px;
 	font-size: 15px;
 }
 .navbar-default a{

@@ -1,3 +1,13 @@
 .home{
 	height: 90vh;
 }
+.wrapper-sidebar{
+	padding: 0 !important;
+	background-color: #505062;
+	color: #d2d2d2;
+	min-height: 90vh !important;
+}
+.wrapper-feedlist{
+	padding: 0px 10px !important;
+	min-height: 90vh !important;
+}

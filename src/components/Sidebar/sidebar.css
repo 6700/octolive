@@ -1,11 +1,9 @@
 
 .sidebar{
 	margin: 10px 0px 0px 10px;
-	border: 1px #45ADA8 solid;
 	height: calc(100vh - 111px);
-	border-radius: 5px;
 	padding: 0px !important;
-	overflow-y: scroll;
+/*	overflow-y: scroll;*/
 }
 hr.style14 { 
   border: 0; 

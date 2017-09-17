@@ -1,13 +1,13 @@
 .feed{
-	border-radius: 5px;
-	border: 1px #45ADA8 solid;
-	height: calc(100vh - 111px);
+/*	border-radius: 5px;*/
+	/*border: 1px #45ADA8 solid;*/
+	height: calc(100vh - 93px);
 	margin-top: 10px;
 	overflow: hidden;
 }
 .refresh-bar{
 	color: white;
-	background-color: #45ADA8 ;
+	background-color: #187975;
 	height: 40px;
 }
 .refresh-button{
@@ -21,13 +21,14 @@
 	height: 40px;
 }
 .selector-feed{
+	font-family: 'Arvo', serif;
 	margin-left: 10px;
 	border-radius: 5px;
 	border: 2px #45ADA8 solid;
 }
 .box{
 	padding: 0px !important;
-	height: calc(100vh - 111px);
+	max-height: 100vh;
 }
 .notifications{
 	height: calc(100vh - 111px);

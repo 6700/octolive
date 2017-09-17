@@ -11,14 +11,15 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 35px;
-	width: 35px;
+	height: 25px;
+	width: 25px;
 	text-align: center;
-	border-radius: 50%;
-	border: 2px #45ADA8 solid;
-	padding: 0px;
+	border-radius: 20px;
+	border: 1.2px #99a0a0 solid;
+	padding: 5px 17px 5px 17px;
 }
 .number p{
-	font-size: 18px;
+	font-size: 15px;
 	margin:0px;
+	padding: 0px;
 }	
