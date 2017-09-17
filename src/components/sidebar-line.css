@@ -2,10 +2,20 @@
 .line{
 	margin-top: 10px;
 	font-size: 18px;
-	padding: 0px !important;
+	padding: 5px !important;
+	transition: 0.4s;
+	cursor: pointer;
+}
+.line:hover,.line:active,.line:focus{
+	padding: 5px !important;
+	background-color: rgba(111, 111, 132, 0.66);
+	border-radius: 4px;
 }
 .icon{
 	padding: 0px !important
+}
+.line p{
+	margin: 0px !important;
 }
 .number{
 	display: flex;

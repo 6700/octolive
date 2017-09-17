@@ -5,6 +5,9 @@
 	padding: 0px !important;
 /*	overflow-y: scroll;*/
 }
+.scrollbar2{
+  padding-left: 0 !important;
+}
 hr.style14 { 
   border: 0; 
   height: 1px; 
