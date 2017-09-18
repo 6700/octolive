@@ -16,7 +16,7 @@ class Sidebar extends Component {
 
   render () {
     return (
-      <div className="col-xs-12 sidebar">
+      <div className="col-xs-12 sidebar no-margin">
         <div className="scrollbar2 col-xs-12" >
           <div className="force-overflow">
     			<SidebarLine text="Inbox" icon="envelope-open-o" section="inbox" />

@@ -1,13 +1,12 @@
 
 .line{
-	margin-top: 10px;
 	font-size: 18px;
-	padding: 5px !important;
+	padding: 15px !important;
 	transition: 0.4s;
 	cursor: pointer;
 }
-.line:hover,.line:active,.line:focus{
-	padding: 5px !important;
+.line:hover, .line:active, .line:focus, .line.current{
+	padding: 15px !important;
 	background-color: rgba(111, 111, 132, 0.66);
 	border-radius: 4px;
 }
@@ -32,4 +31,4 @@
 	font-size: 15px;
 	margin:0px;
 	padding: 0px;
-}	
+}
