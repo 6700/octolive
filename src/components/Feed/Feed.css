@@ -29,6 +29,15 @@
 	width: 28px;
 	background-color: black;
 }
+
+.feed-actions a, .feed-actions .active:active{
+	color: #e1e3e8 !important;
+}
+
+.feed-actions a.active i, .feed-actions a:hover i {
+	color: #45ADA8 !important;
+}
+
 .bookmark{
 	margin-left: 10px;
 	padding: 0px !important;
