@@ -48,7 +48,7 @@ class FeedNotification extends Component {
     		<p>{this.props.message}</p>
     	</div>
     	<div onClick={this.handleClick} className="col-xs-3 col-sm-3 repo-name">
-    		<p className="col-xs-10">{this.props.repoName}</p>
+    		<p className="col-xs-10">{this.props.repo_name}</p>
     	</div>
     	<div onClick={this.handleClick} className=" circle">
     	</div>
