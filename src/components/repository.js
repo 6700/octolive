@@ -1,23 +1,9 @@
 import React, { Component } from 'react';
 import './repository.css'
 import SidebarLine from './sidebar-line';
-import ApiRoutes from '../api_routes';
-const { f } = window;
 class Repository extends Component {
-	constructor (props) {
-        super(props)
-        this.state = {
-            notificationsCount: {}
-        }
-    }
-    componentDidMount() {
-        f(ApiRoutes.notification)
-            .then((content) => {
-                this.setState({
-                    notificationsCount: content
-                })
-            })
-    }
+	state = { notificationsCount: {} }
+
   render () {
 
     return (
@@ -47,7 +33,11 @@ class Repository extends Component {
 	    		<SidebarLine text="Mentions" icon="commenting-o" notificationsCount={this.state.notificationsCount.mentions_count}/>
 	    		<SidebarLine text="Issues" icon="exclamation-circle" notificationsCount={this.state.notificationsCount.issues_count}/>
 	    	</div>
-				<button className="btn-access refresh-button"> <p>Access</p></button>
+				<a href={this.props.url} target="_blank" className="btn-access refresh-button">
+					<p>
+						Access
+					</p>
+				</a>
     	</div>
     </div>
     )

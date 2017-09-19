@@ -26,17 +26,9 @@ class Repositories extends Component {
 	    	</div>
 	    		<div className="repo-box">
 	    			<div className="col-xs-12">
-              {
-                RepositoriesChest.state.repositories.map((repository) => {
-                  return (
-                    <Repository
-                      key={repository.id}
-                      name={repository.name}
-                      owner={repository.owner}
-                    />
-                  )
-                })
-              }
+              {RepositoriesChest.state.repositories.map(
+                repository => <Repository {...repository} key={repository.id} />
+              )}
 	    			</div>
 	    		</div>
 	    </div>

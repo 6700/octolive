@@ -8,11 +8,11 @@ import './navbar.css';
 
 
 class Navbar extends Component {
-  componentWillUpdate=()=> {
+  componentWillUpdate = () => {
     var counter = NotificationChest.state.notificationsCount.inbox_count + NotificationChest.state.notificationsCount.archived_count + NotificationChest.state.notificationsCount.pending_count + NotificationChest.state.notificationsCount.important_count + NotificationChest.state.notificationsCount.releases_count + NotificationChest.state.notificationsCount.pull_requests_count + NotificationChest.state.notificationsCount.mentions_count + NotificationChest.state.notificationsCount.issues_count
       if (counter === 0) {
         document.title = 'Octolive'
-      } else if (counter<100) {
+      } else if (counter < 100) {
         document.title = 'Octolive ('+ counter + ')'
       } else {
         document.title = 'Octolive (+99)'
@@ -25,32 +25,30 @@ class Navbar extends Component {
   }
 
   componentWillUnmount = () => {
+    NotificationChest.unregister(this)
     AuthenticationChest.unregister(this)
   }
 
-  logOut = () => {
-    AuthenticationManager.logOut()
-  }
-  logIn = () => {
-    AuthenticationManager.logIn()
-  }
+  logOut = () => AuthenticationManager.logOut()
+  logIn = () => AuthenticationManager.logIn()
+
   renderUsername = () => {
     if(AuthenticationChest.state.isLogged){
       return (
         <div className="container-fluid">
           <ul className="navbar-left">
-            <li className="routes ">
-                <a href="/#/repositories">Repositories</a>
+            <li className="routes">
+              <a href="/#/">Feed</a>
             </li>
             <li className="routes">
-              <a href="#">Feed</a>
+              <a href="/#/repositories">Repositories</a>
             </li>
           </ul>
           <ul className="nav navbar-nav navbar-right">
             <li className="user-data">
               <a href="#">
                 <img src={AuthenticationChest.state.user.avatar_url} height={30} alt=""/>
-                @{ AuthenticationChest.state.user.show_name }
+                @{AuthenticationChest.state.user.show_name}
               </a>
             </li>
             <li>
