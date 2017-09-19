@@ -3,14 +3,16 @@ import './sidebar.css';
 import SidebarLine from '../sidebar-line';
 import Line from '../line'
 import NotificationManager from '../../managers/notification_manager'
-const { NotificationChest } = window;
+const { NotificationChest, FeedChest } = window;
 
 class Sidebar extends Component {
   componentDidMount() {
     NotificationManager.update()
     NotificationChest.register(this)
+    FeedChest.register(this)
   }
   componentWillUnmount () {
+    FeedChest.unregister(this)
     NotificationChest.unregister(this)
   }
 
